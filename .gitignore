@@ -8,3 +8,4 @@ dev.sqlite3
 tests/e2e/screenshots/
 server/public/main.css
 storybook-static
+pnpm-lock.yaml
