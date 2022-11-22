@@ -79,21 +79,20 @@ export default function EventForm(props) {
 
             <label htmlFor="volunteersNeeded" className="label">
               Volunteers Needed
+              {formik.errors.volunteersNeeded &&
+              formik.touched.volunteersNeeded ? (
+                <p className="inputError">{formik.errors.volunteersNeeded}</p>
+              ) : null}
+              <input
+                className="form-box"
+                id="volunteersNeeded"
+                name="volunteersNeeded"
+                placeholder="volunteers needed"
+                min="0"
+                onChange={formik.handleChange}
+                value={formik.values.volunteersNeeded}
+              />
             </label>
-            {formik.errors.volunteersNeeded &&
-            formik.touched.volunteersNeeded ? (
-              <p className="inputError">{formik.errors.volunteersNeeded}</p>
-            ) : null}
-            <input
-              className="form-box"
-              id="volunteersNeeded"
-              name="volunteersNeeded"
-              type="number"
-              placeholder="volunteers needed"
-              min="0"
-              onChange={formik.handleChange}
-              value={formik.values.volunteersNeeded}
-            />
 
             <label htmlFor="description" className="label">
               Description

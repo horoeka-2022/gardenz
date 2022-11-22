@@ -37,7 +37,7 @@ describe('form field values', () => {
 })
 
 describe('submit button', () => {
-  it('calls helper correctly on click', async () => {
+  it.only('calls helper correctly on click', async () => {
     updateEvent.mockImplementation((gardenId, event, navigateTo) => {
       expect(gardenId).toBe(1)
       expect(event.id).toBe('23')
@@ -56,9 +56,22 @@ describe('submit button', () => {
     const titleInput = await screen.findByRole('textbox', {
       name: 'Event Title',
     })
+    const dateInput = await screen.findByRole('date', {
+      name: 'Date',
+    })
+    const voluneteersNeededInput = await screen.findByRole('textbox', {
+      name: 'Volunteers Needed',
+    })
+    const descriptionInput = await screen.findByRole('textbox', {
+      name: 'Description',
+    })
+
     const editButton = screen.getByRole('button', { name: 'Submit' })
     userEvent.clear(titleInput)
     userEvent.type(titleInput, 'test title')
+    userEvent.type(dateInput, '2022-05-01')
+    userEvent.type(voluneteersNeededInput, '2')
+    userEvent.type(descriptionInput, 'test description')
     userEvent.click(editButton) // form validation will kick in
 
     // wait for formik to its validation to be completed (asynchronise)
