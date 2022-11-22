@@ -10,8 +10,9 @@ import UserRoutes from './routes/UserRoutes'
 export default function App() {
   const { isAuthenticated, getAccessTokenSilently, user } = useAuth0()
 
-  useEffect(async () => {
-    await cacheUser(isAuthenticated, getAccessTokenSilently, user)
+  useEffect(() => {
+    ;(async () =>
+      await cacheUser(isAuthenticated, getAccessTokenSilently, user))()
   })
 
   return (
