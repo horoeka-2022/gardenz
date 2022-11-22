@@ -1,6 +1,6 @@
 ## Definition of Done
 
-Wanna contribute and merge your work?  Every github PR will include a lit of completion criteria.  See the [Definition of Done](./docs/pull_request_template.md) template for details.  
+Wanna contribute and merge your work?  Every github pull request (PR) will include a list of completion criteria.  See the [Definition of Done](./docs/pull_request_template.md) template for details.  
 
 ## Git Workflow
 
@@ -10,7 +10,7 @@ When a large team works on a project together, it's important to keep your branc
 2. Code and thoroughly test your feature (with automation or manually).
 3. Commit to your branch regularly.
 4. Push your branch to origin.
-5. Create a PR (pull request) on Github **_against the dev branch_**.
+5. Create a PR on Github **_against the dev branch_**.
 6. On the PR page, check the results of the CI (continuous integration) tests.  Fix any issues.
 7. Move your Github Issues task ticket into the review column.
 8. Ask a teacher for a code review and fix any issues.  Retest your feature.
@@ -31,15 +31,15 @@ This diagram includes task development and task integration flows.  The main dif
 
 ## Merge Conflicts
 
-In a large team, it is quite likely that you will run see merge conflicts in Github PRs.  Here's how you can resolve them.
+In a large team, it is quite likely that you will run into merge conflicts in Github PRs.  Here's how you can resolve them.
 
 1. Pull origin's **_dev_** branch directly into your branch.  This begins a merge.
 2. In VSCode, resolve merge conflicts file-by-file.  Ask for help from other devs who's work is affected if needed. 
 3. After all conflicts are resolved, **_retest your feature_**.
 4. Make the merge commit.
-4. Push your merged branch to origin.
+4. Push your merged branch (not the dev branch) to origin.
 6. Ask devs who's work might be affected to review your PR, check for accidental deletions.
-5. Revisit Github and **_merge back to dev_**.
+5. Revisit your PR and **_merge back to dev_**.
 
 ## Code Issues to Look-out For
 
