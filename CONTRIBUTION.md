@@ -16,6 +16,19 @@ When a large team works on a project together, it's important to keep your branc
 8. Ask a teacher for a code review and fix any issues.  Retest your feature.
 9. After a teacher reviews and approves your PR, **_merge it to dev_**.
 
+<details><summary>Flow Diagram</summary>
+
+This diagram includes task development and task integration flows.  The main difference is that Task Integration includes a merge from dev into your task branch.
+
+**Changes**
+* __Only one PR is required pr branch.__
+* __Note that there is no need for peer reviews (from other developers) on this project.__
+
+
+![Git Workflow](./git-flow.jpg)
+
+</details>
+
 ## Merge Conflicts
 
 In a large team, it is quite likely that you will run see merge conflicts in Github PRs.  Here's how you can resolve them.
