@@ -81,7 +81,6 @@ describe('event form', () => {
     const titleInput = await screen.findByRole('textbox', {
       name: 'Event Title',
     })
-    // .then((titleInput) => {
     expect(titleInput).toBeInTheDocument()
   })
 })
