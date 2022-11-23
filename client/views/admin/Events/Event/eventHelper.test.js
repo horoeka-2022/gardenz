@@ -36,18 +36,13 @@ describe('getEvent', () => {
           },
         })
       }
-      try {
-        const event = await getEvent(2, mockUserAdmin, consume)
-        expect(dispatch).toHaveBeenCalledWith(setWaiting())
-        expect(dispatch).toHaveBeenCalledWith(clearWaiting())
-        expect(event.title).toBe('test event')
-        expect(event.volunteers).toHaveLength(1)
-        expect(event.extraVolunteers).toHaveLength(1)
-        expect(event).not.toHaveProperty('fake')
-        return null
-      } catch (error) {
-        return new Error(error.message)
-      }
+      const event = await getEvent(2, mockUserAdmin, consume)
+      expect(dispatch).toHaveBeenCalledWith(setWaiting())
+      expect(dispatch).toHaveBeenCalledWith(clearWaiting())
+      expect(event.title).toBe('test event')
+      expect(event.volunteers).toHaveLength(1)
+      expect(event.extraVolunteers).toHaveLength(1)
+      expect(event).not.toHaveProperty('fake')
     })
   })
   it('dispatches with the correct event action for non admin', async () => {
@@ -68,28 +63,21 @@ describe('getEvent', () => {
         },
       })
     }
-    try {
-      const event = await getEvent(2, mockUserNonAdmin, consume)
-      expect(dispatch).toHaveBeenCalledWith(setWaiting())
-      expect(dispatch).toHaveBeenCalledWith(clearWaiting())
-      expect(event.title).toBe('test event')
-      expect(event.isVolunteer).toBe(true)
-      expect(event).not.toHaveProperty('fake')
-      return null
-    } catch (error) {
-      return new Error(error.message)
-    }
+    const event = await getEvent(2, mockUserNonAdmin, consume)
+    expect(dispatch).toHaveBeenCalledWith(setWaiting())
+    expect(dispatch).toHaveBeenCalledWith(clearWaiting())
+    expect(event.title).toBe('test event')
+    expect(event.isVolunteer).toBe(true)
+    expect(event).not.toHaveProperty('fake')
   })
 
   describe('-> GET /event/:id api call rejection', () => {
-    it('dispatches error correctly', () => {
+    it('dispatches error correctly', async () => {
       function consume() {
         return Promise.reject(new Error('mock error'))
       }
-      return getEvent(null, mockUserAdmin, consume).then(() => {
-        expect(dispatch.mock.calls[1][0].payload).toBe('mock error')
-        return null
-      })
+      await getEvent(null, mockUserAdmin, consume)
+      expect(dispatch.mock.calls[1][0].payload).toBe('mock error')
     })
   })
 })
