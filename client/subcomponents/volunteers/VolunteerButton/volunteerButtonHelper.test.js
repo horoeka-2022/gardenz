@@ -51,32 +51,6 @@ describe('toggleVolunteerStatus', () => {
 
     return toggleVolunteerStatus(eventId, willVolunteer, null, consume)
   })
-  // original test below:
-  // it('dispatches correct actions and calls setVolunteering when api call successful', () => {
-  //   getState.mockImplementation(() => ({
-  //     user: { id: 4, token: 'dummytoken' },
-  //   }))
-  //   const willVolunteer = true
-  //   const setVolunteering = jest.fn()
-  //   const eventId = 1
-
-  //   function consume() {
-  //     return Promise.resolve()
-  //   }
-
-  //   return toggleVolunteerStatus(
-  //     eventId,
-  //     willVolunteer,
-  //     setVolunteering,
-  //     consume
-  //   ).then(() => {
-  //     expect(dispatch).toHaveBeenCalledWith(setWaiting())
-  //     expect(setVolunteering).toHaveBeenCalledWith(true)
-  //     return null
-  //   })
-  // })
-
-  ////// working test below (rewritten)
 
   it('dispatches correct actions and calls setVolunteering when api call successful', async () => {
     getState.mockImplementation(() => ({
@@ -100,29 +74,6 @@ describe('toggleVolunteerStatus', () => {
     expect(setVolunteering).toHaveBeenCalledWith(true)
   })
 
-  //////// original below:
-
-  // it('dispatches error correctly and returns false when api call unsuccessful', () => {
-  //   getState.mockImplementation(() => ({
-  //     user: { id: 1, token: 'dummytoken' },
-  //   }))
-  //   const setVolunteering = jest.fn()
-
-  //   function consume() {
-  //     return Promise.reject(new Error('mock error'))
-  //   }
-
-  //   return toggleVolunteerStatus(null, null, setVolunteering, consume).then(
-  //     () => {
-  //       expect(dispatch.mock.calls[1][0].payload).toBe('mock error')
-  //       expect(setVolunteering).not.toHaveBeenCalled()
-  //       return null
-  //     }
-  //   )
-  // })
-
-  /////
-
   it('dispatches error correctly and returns false when api call unsuccessful', async () => {
     getState.mockImplementation(() => ({
       user: { id: 1, token: 'dummytoken' },
@@ -137,6 +88,4 @@ describe('toggleVolunteerStatus', () => {
     expect(dispatch.mock.calls[1][0].payload).toBe('mock error')
     expect(setVolunteering).not.toHaveBeenCalled()
   })
-
-  /////
 })
