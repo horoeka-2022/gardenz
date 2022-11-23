@@ -50,16 +50,13 @@ export default function EventItem({ address, event, user }) {
       <icons className="text-3xl text-gray-500 flex flex-row">
         <a
           className="mt-2 mx-2"
-          href="https://www.facebook.com/sharer/sharer.php?u=https://www.websiteplanet.com/webtools/sharelink/"
+          href="https://www.facebook.com/sharer/sharer.php?"
         >
           <i>
             <BsFacebook />
           </i>
         </a>
-        <a
-          className="mt-2 mx-2"
-          href="https://twitter.com/intent/tweet?url=https://www.websiteplanet.com/webtools/sharelink/&text="
-        >
+        <a className="mt-2 mx-2" href="https://twitter.com/intent/tweet?">
           <i>
             <BsTwitter />
           </i>
