@@ -19,7 +19,7 @@ const mockUserNonAdmin = {
 
 describe('getEvent', () => {
   describe('-> GET /events/:id api call success', () => {
-    it('dispatches with the correct event action for admin', () => {
+    it('dispatches with the correct event action for admin', async () => {
       function consume(path) {
         expect(path).toMatch('2')
         return Promise.resolve({
@@ -37,7 +37,8 @@ describe('getEvent', () => {
         })
       }
 
-      return getEvent(2, mockUserAdmin, consume).then((event) => {
+      try {
+        const event = await getEvent(2, mockUserAdmin, consume)
         expect(dispatch).toHaveBeenCalledWith(setWaiting())
         expect(dispatch).toHaveBeenCalledWith(clearWaiting())
         expect(event.title).toBe('test event')
@@ -45,35 +46,37 @@ describe('getEvent', () => {
         expect(event.extraVolunteers).toHaveLength(1)
         expect(event).not.toHaveProperty('fake')
         return null
-      })
-    })
-    it('dispatches with the correct event action for non admin', () => {
-      function consume(path) {
-        expect(path).toMatch('2')
-        return Promise.resolve({
-          body: {
-            gardenName: 'test name',
-            gardenAddress: 'test address',
-            title: 'test event',
-            date: '2021-04-30',
-            volunteersNeeded: 3,
-            description: 'wow great description',
-            volunteers: [{ userId: mockUserNonAdmin.id }],
-            isVolunteer: true,
-            extraVolunteers: [],
-            fake: 'asdf',
-          },
-        })
+      } catch (error) {
+        return new Error(error.message)
       }
-
-      return getEvent(2, mockUserNonAdmin, consume).then((event) => {
-        expect(dispatch).toHaveBeenCalledWith(setWaiting())
-        expect(dispatch).toHaveBeenCalledWith(clearWaiting())
-        expect(event.title).toBe('test event')
-        expect(event.isVolunteer).toBe(true)
-        expect(event).not.toHaveProperty('fake')
-        return null
+    })
+  })
+  it('dispatches with the correct event action for non admin', () => {
+    function consume(path) {
+      expect(path).toMatch('2')
+      return Promise.resolve({
+        body: {
+          gardenName: 'test name',
+          gardenAddress: 'test address',
+          title: 'test event',
+          date: '2021-04-30',
+          volunteersNeeded: 3,
+          description: 'wow great description',
+          volunteers: [{ userId: mockUserNonAdmin.id }],
+          isVolunteer: true,
+          extraVolunteers: [],
+          fake: 'asdf',
+        },
       })
+    }
+
+    return getEvent(2, mockUserNonAdmin, consume).then((event) => {
+      expect(dispatch).toHaveBeenCalledWith(setWaiting())
+      expect(dispatch).toHaveBeenCalledWith(clearWaiting())
+      expect(event.title).toBe('test event')
+      expect(event.isVolunteer).toBe(true)
+      expect(event).not.toHaveProperty('fake')
+      return null
     })
   })
 
