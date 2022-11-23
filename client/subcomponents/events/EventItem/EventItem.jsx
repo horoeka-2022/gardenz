@@ -47,7 +47,7 @@ export default function EventItem({ address, event, user }) {
           Please sign in to volunteer
         </button>
       </Conditional>
-      <icons className="text-3xl text-gray-500 flex flex-row">
+      <div className="text-3xl text-gray-500 flex flex-row">
         <a
           className="mt-2 mx-2"
           href="https://www.facebook.com/sharer/sharer.php?"
@@ -61,7 +61,7 @@ export default function EventItem({ address, event, user }) {
             <BsTwitter />
           </i>
         </a>
-      </icons>
+      </div>
     </article>
   )
 }
