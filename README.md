@@ -18,16 +18,16 @@ npm run dev
 `IMPORTANT:` Please ask one of the facilitators to give the actual values that should be in the `.env` file.
 
 You can find the server running on [http://localhost:3000](http://localhost:3000).
-
+___
 ## Tech used in this Project
-- Storybook: is a tool for UI development
-- vite: a fast bundler (bye bye webpack)
-- leaflet: component to view maps
-- visx: to plot graphs
-- formik/yup: validating forms
-- tailwindcss: utility classes for styling
-- playwright: end-to-end testing
-
+- Storybook: is a tool for UI development: [video introduction](https://www.youtube.com/watch?v=gdlTFPebzAU), [docs](https://storybook.js.org/docs/react/get-started/introduction)
+- Vite: a fast bundler: [video introduction](https://www.youtube.com/watch?v=KCrXgy8qtjM), [docs](https://vitejs.dev/guide/)
+- leaflet: component to view maps: [docs](https://leafletjs.com/reference.html)
+- visx: to plot graphs: [docs](https://airbnb.io/visx/docs)
+- formik/yup: validating forms [formik docs](https://formik.org/docs/overview)
+- tailwindcss: utility classes for styling: [video introduction](https://www.google.com/search?q=tailwind&source=lnms&tbm=vid&sa=X&ved=2ahUKEwjj68-pgMP7AhV21jgGHWukCe0Q_AUoBHoECAEQBg&biw=1440&bih=789&dpr=2#fpstate=ive&vld=cid:0d59cd2c,vid:mr15Xzb1Ook), [docs](https://tailwindcss.com/docs/installation)
+- playwright: end-to-end testing [docs](https://playwright.dev/docs/intro)
+___
 ## Testing
 
 ### Unit/Integration tests
@@ -62,22 +62,22 @@ npm run test:e2e
 ```
 
 update the .env file with testing email and password, make sure that this account has been created with Auth0
+___
+## Auth0
 
-### Auth0
-
-#### First-time using Gardenz
+#### **First-time using Gardenz**
 
 In Gardenz, click on _Register_ and add your email and password and click _Coninue_. You'll be redirected to Gardenz to enter additional information.
 
-#### After Database migration
+#### **After Database migration**
 
 Your user account exists in Auth0 but not locally on your DB. Go to Gardenz, and click _Register_, this time click on **Log in** at the bottom and enter your email and password. There is no need to Register new emails at all, you can always sign in using your same email you used in the step above.
 You'll be redirected to Gardenz to enter additional information.
 
-#### Admin Role
+#### **Admin Role**
 
 Create an account in Auth0.com, register with your personal email and ask one of the facilitators to give you a global access as a Tenant Admin.
-
+___
 ## User stories (from highest priority)
 
 1. As a community member, I want to see the gardens in my area.
@@ -86,13 +86,16 @@ Create an account in Auth0.com, register with your personal email and ask one of
 1. As a community member, I want to volunteer at my garden's events.
 1. As a garden administrator, I want to see event volunteers.
 1. As a garden administrator, I want to track event volunteers.
+___
+## User interface / Wireframes
 
-## User interface / Wireframes (proposal)
+When you are working on a page please find the layout of the page in the Figma wireframes. If you have ay questions about layout please ask a facilitator
 
-[Figma wireframe desgin](https://www.figma.com/file/QbkygWObPAOmQzMRvVV6ma/gardenz?node-id=5%3A1327)
-
-## API routes (proposal)
-
+[Figma wireframe desgin](https://www.figma.com/file/QbkygWObPAOmQzMRvVV6ma/gardenz?node-id=0%3A1&t=pjERH9un4JlyLZSb-0)
+___
+## API routes
+<details>
+<summary><b>See api routes here</b></summary>
 Failure response (HTTP status: 500):
 
 ```json
@@ -345,11 +348,14 @@ Request:
 ```
 
 Response (201)
+</details>
+
+___
 ## Database schema (proposal)
 
-![Gardenz Entity Relationship Diagram](docs/erd.png)
+This has grown and will continue to grow as we add new tables
 [Gardenz ERD on dbdiagram.io](https://dbdiagram.io/d/5f61c9407da1ea736e2e0bda)
-
+___
 ## Sendgrid
 
 Email notifications are being sent via https://sendgrid.com/ from the address admin@gardenz.eda.nz
@@ -368,14 +374,14 @@ http://localhost:3000/api/v1/volunteer/emailsignup?token={{token}}
 
 https://gardenz-app.herokuapp.com/api/v1/volunteer/emailsignup?token={{token}}
 
-
+___
 ## Tailwind CSS
 
 Familarise yourself with Tailwinds Utility first approach: https://tailwindcss.com/docs/utility-first
 
 The styling throughout GardeNZ closely follows the Tailwind docs. Please refer to the sidebar nvaigation to find classes that fit the component that you are building: https://tailwindcss.com/docs/container
 
-You can find the design files here: https://www.figma.com/file/QbkygWObPAOmQzMRvVV6ma/gardenz?node-id=0%3A1
+You can find the design files here: [figma](https://www.figma.com/file/QbkygWObPAOmQzMRvVV6ma/gardenz?node-id=0%3A1)
 
 
 
