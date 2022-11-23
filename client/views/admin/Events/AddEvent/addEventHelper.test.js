@@ -34,7 +34,7 @@ describe('addEvent', () => {
   })
 })
 
-it('dispatches error on POST /events rejection', () => {
+it('dispatches error on POST /events rejection', async () => {
   const navigateTo = jest.fn()
   getState.mockImplementation(() => ({
     user: { gardenId: 1, token: 'dummytoken' },
@@ -42,9 +42,7 @@ it('dispatches error on POST /events rejection', () => {
   function consume() {
     return Promise.reject(new Error('mock error'))
   }
-  return addEvent({}, navigateTo, consume).then(() => {
-    expect(dispatch.mock.calls[1][0].payload).toBe('mock error')
-    expect(navigateTo).not.toHaveBeenCalled()
-    return null
-  })
+  await addEvent({}, navigateTo, consume)
+  expect(dispatch.mock.calls[1][0].payload).toBe('mock error')
+  expect(navigateTo).not.toHaveBeenCalled()
 })
