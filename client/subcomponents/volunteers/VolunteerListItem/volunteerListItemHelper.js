@@ -3,6 +3,7 @@ import { dispatch, getState } from '../../../store'
 import { setWaiting, clearWaiting } from '../../../slices/waiting'
 import { showError } from '../../../slices/error'
 
+//original below:
 // export function toggleAttendance(volunteerData, consume = requestor) {
 //   const storeState = getState()
 //   const { token } = storeState.user
@@ -19,7 +20,7 @@ import { showError } from '../../../slices/error'
 //     })
 // }
 
-/////////
+///////// new async function below:
 
 export async function toggleAttendance(volunteerData, consume = requestor) {
   try {
