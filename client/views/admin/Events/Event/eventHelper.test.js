@@ -36,7 +36,6 @@ describe('getEvent', () => {
           },
         })
       }
-
       try {
         const event = await getEvent(2, mockUserAdmin, consume)
         expect(dispatch).toHaveBeenCalledWith(setWaiting())
@@ -51,7 +50,7 @@ describe('getEvent', () => {
       }
     })
   })
-  it('dispatches with the correct event action for non admin', () => {
+  it('dispatches with the correct event action for non admin', async () => {
     function consume(path) {
       expect(path).toMatch('2')
       return Promise.resolve({
@@ -69,15 +68,17 @@ describe('getEvent', () => {
         },
       })
     }
-
-    return getEvent(2, mockUserNonAdmin, consume).then((event) => {
+    try {
+      const event = await getEvent(2, mockUserNonAdmin, consume)
       expect(dispatch).toHaveBeenCalledWith(setWaiting())
       expect(dispatch).toHaveBeenCalledWith(clearWaiting())
       expect(event.title).toBe('test event')
       expect(event.isVolunteer).toBe(true)
       expect(event).not.toHaveProperty('fake')
       return null
-    })
+    } catch (error) {
+      return new Error(error.message)
+    }
   })
 
   describe('-> GET /event/:id api call rejection', () => {
