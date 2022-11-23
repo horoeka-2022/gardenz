@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import VolunteerButton from '../../volunteers/VolunteerButton/VolunteerButton'
 import Conditional from '../../Conditional'
+import { BsFacebook, BsTwitter } from 'react-icons/bs'
 
 export default function EventItem({ address, event, user }) {
   const { id, title, date, volunteersNeeded, totalVolunteers, isVolunteer } =
@@ -46,6 +47,24 @@ export default function EventItem({ address, event, user }) {
           Please sign in to volunteer
         </button>
       </Conditional>
+      <icons className="text-3xl text-gray-500 flex flex-row">
+        <a
+          className="mt-2 mx-2"
+          href="https://www.facebook.com/sharer/sharer.php?u=https://www.websiteplanet.com/webtools/sharelink/"
+        >
+          <i>
+            <BsFacebook />
+          </i>
+        </a>
+        <a
+          className="mt-2 mx-2"
+          href="https://twitter.com/intent/tweet?url=https://www.websiteplanet.com/webtools/sharelink/&text="
+        >
+          <i>
+            <BsTwitter />
+          </i>
+        </a>
+      </icons>
     </article>
   )
 }
