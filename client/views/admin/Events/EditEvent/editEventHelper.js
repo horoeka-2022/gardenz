@@ -3,17 +3,17 @@ import { setWaiting, clearWaiting } from '../../../../slices/waiting'
 import { showError } from '../../../../slices/error'
 import requestor from '../../../../consume'
 
-export function getEvent(id, consume = requestor) {
+export async function getEvent(id, consume = requestor) {
   dispatch(setWaiting())
-  return consume(`/events/${id}`)
-    .then((res) => {
-      dispatch(clearWaiting())
-      const { title, date, volunteersNeeded, description } = res.body
-      return { title, date, description, volunteersNeeded }
-    })
-    .catch((err) => {
-      dispatch(showError(err.message))
-    })
+  try {
+    const res = await consume(`/events/${id}`)
+    const { title, date, volunteersNeeded, description } = res.body
+    return { title, date, description, volunteersNeeded }
+  } catch (err) {
+    dispatch(showError(err.message))
+  } finally {
+    dispatch(clearWaiting())
+  }
 }
 
 export function updateEvent(gardenId, event, navigateTo, consume = requestor) {
