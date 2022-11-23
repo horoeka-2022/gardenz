@@ -5,12 +5,14 @@ export default function ProduceList({ gardenid }) {
   const [produce, setProduce] = useState([])
 
   useEffect(() => {
-    // eslint-disable-next-line promise/catch-or-return
-    getProduce(gardenid).then(({ produce }) => {
-      setProduce(produce)
-      return null
-    })
+    const retrieveProduce = async () => {
+      const gardenProducts = await getProduce(gardenid)
+      await setProduce(gardenProducts)
+    }
+    retrieveProduce()
+      .catch(console.error)
   }, [gardenid])
+
 
   return (
     <>
