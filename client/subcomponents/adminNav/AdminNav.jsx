@@ -10,19 +10,19 @@ function AdminNav() {
         <li>
           <Link to={`/admin/gardens/${id}/cover`}>Update Cover</Link>
         </li>
-        <li>
+        <li className=" hover:text-green block my-6  py-2 px-6 basis-1/4 ">
           <Link to={`/admin/gardens/${id}/events`}>Add/Edit Events</Link>
         </li>
-        <li>
+        <li className=" hover:text-green block my-6  py-2 px-6 basis-1/4 ">
           <Link to={`/admin/gardens/${id}/news/add`}>Post News</Link>
         </li>
-        <li>
+        <li className=" hover:text-green block my-6  py-2 px-6 basis-1/4 ">
           <Link to={`/admin/gardens/${id}/gallery`}>Update Gallery</Link>
         </li>
-        <li>
+        <li className=" hover:text-green block my-6  py-2 px-6 basis-1/4 ">
           <Link to={`/admin/gardens/${id}/orders`}>Manage Order</Link>
         </li>
-        <li>
+        <li className=" hover:text-green block my-6  py-2 px-6 basis-1/4 ">
           <Link to={`/admin/gardens/${id}/volunteers`}>Volunteers</Link>
         </li>
         <li className="pr-4">

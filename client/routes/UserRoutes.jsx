@@ -1,7 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import IsUser from '../subcomponents/IsUser/IsUser'
-import UserNav from '../subcomponents/userNav/UserNav'
 import Home from '../views/Index/Index'
 import PageNotFound from '../views/PageNotFound/PageNotFound'
 import About from '../views/user/Gardens/about/About'
@@ -22,7 +21,6 @@ function UserRoutes() {
           path="/gardens/:id/news"
           element={
             <>
-              <UserNav />
               <News />
             </>
           }
@@ -31,7 +29,6 @@ function UserRoutes() {
           path="/gardens/:id/about"
           element={
             <>
-              <UserNav />
               <About />
             </>
           }
@@ -40,7 +37,6 @@ function UserRoutes() {
           path="/gardens/:id/events"
           element={
             <>
-              <UserNav />
               <GardenEvents />
             </>
           }
@@ -49,7 +45,6 @@ function UserRoutes() {
           path="/gardens/:id/gallery"
           element={
             <>
-              <UserNav />
               <Gallery />
             </>
           }
@@ -58,7 +53,6 @@ function UserRoutes() {
           path="/gardens/:id/shop"
           element={
             <>
-              <UserNav />
               <Shop />
             </>
           }

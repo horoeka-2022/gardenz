@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
+import UserNav from '../userNav/UserNav'
+import AdminNav from '../adminNav/AdminNav'
 
 import {
   IfAuthenticated,
@@ -56,6 +58,7 @@ export default function Nav() {
           >
             Home
           </Link>
+          <UserNav />
 
           <IfAuthenticated>
             <a
@@ -65,16 +68,17 @@ export default function Nav() {
             >
               Log out
             </a>
+            <AdminNav />
           </IfAuthenticated>
 
           <IfNotAuthenticated>
-            <a
+            {/* <a
               href="/"
               onClick={handleLogin}
               className="text-white hover:text-green block my-6 py-2 px-6"
             >
               Sign in
-            </a>
+            </a> */}
             <a
               href="/"
               onClick={handleRegister}
@@ -82,6 +86,14 @@ export default function Nav() {
             >
               Register
             </a>
+            <a
+              href="/"
+              onClick={handleLogin}
+              className="text-white hover:text-green block my-6 py-2 px-6"
+            >
+              Sign in
+            </a>
+            {/* <UserNav /> */}
           </IfNotAuthenticated>
         </div>
       </nav>
