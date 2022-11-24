@@ -40,93 +40,102 @@ export default function EventForm(props) {
 
   return (
     <>
-      <section className="container md:flex mx-auto mt-5 content-center">
-        <h2 className="form-title text-darkBlue text-[24px] font-serif">
-          {props.action}
-        </h2>
-        <form className="form-content" onSubmit={formik.handleSubmit}>
-          <div className="field">
-            <label htmlFor="title" className="label">
-              Event Title
-            </label>
-            {formik.errors.title && formik.touched.title ? (
-              <p className="inputError">{formik.errors.title}</p>
-            ) : null}
-            <input
-              className="form-box border"
-              id="title"
-              name="title"
-              type="text"
-              placeholder="event title"
-              onChange={formik.handleChange}
-              value={formik.values.title}
-            />
+      <section className="mx-auto max-w-md mt-9 ">
+        <div className="">
+          <h2 className="form-title text-darkBlue text-[24px] font-serif py-3">
+            {props.action}
+          </h2>
 
-            <label htmlFor="date" className="label">
-              Date
-            </label>
-            {formik.errors.date && formik.touched.date ? (
-              <p className="inputError">{formik.errors.date}</p>
-            ) : null}
-            <input
-              className="form-box border"
-              id="date"
-              name="date"
-              type="date"
-              role="date"
-              placeholder="date"
-              onChange={formik.handleChange}
-              value={formik.values.date}
-            />
-
-            <label htmlFor="volunteersNeeded" className="label">
-              Volunteers Needed
-            </label>
-            {formik.errors.volunteersNeeded &&
-            formik.touched.volunteersNeeded ? (
-              <p className="inputError">{formik.errors.volunteersNeeded}</p>
-            ) : null}
-            <input
-              className="form-box border"
-              id="volunteersNeeded"
-              name="volunteersNeeded"
-              type="number"
-              placeholder="volunteers needed"
-              min="0"
-              onChange={formik.handleChange}
-              value={formik.values.volunteersNeeded}
-            />
-
-            <div>
+          <form className="form-content" onSubmit={formik.handleSubmit}>
+            <div className="field">
+              <label htmlFor="title" className="label">
+                Event Title
+              </label>
+              <div>
+                {formik.errors.title && formik.touched.title ? (
+                  <p className="inputError">{formik.errors.title}</p>
+                ) : null}
+                <input
+                  className="form-box border border-[1.5px] border-blue rounded-[4px]"
+                  id="title"
+                  name="title"
+                  type="text"
+                  placeholder="event title"
+                  onChange={formik.handleChange}
+                  value={formik.values.title}
+                />
+              </div>
+              <label htmlFor="date" className="label">
+                Date
+              </label>
+              <div>
+                {formik.errors.date && formik.touched.date ? (
+                  <p className="inputError">{formik.errors.date}</p>
+                ) : null}
+                <input
+                  className="form-box border border-[1.5px] border-blue rounded-[4px]"
+                  id="date"
+                  name="date"
+                  type="date"
+                  role="date"
+                  placeholder="date"
+                  onChange={formik.handleChange}
+                  value={formik.values.date}
+                />
+              </div>
+              <label htmlFor="volunteersNeeded" className="label">
+                Volunteers Needed
+              </label>
+              <div>
+                {formik.errors.volunteersNeeded &&
+                formik.touched.volunteersNeeded ? (
+                  <p className="inputError">{formik.errors.volunteersNeeded}</p>
+                ) : null}
+                <input
+                  className="form-box border border-[1.5px] border-blue rounded-[4px]"
+                  id="volunteersNeeded"
+                  name="volunteersNeeded"
+                  type="number"
+                  placeholder="volunteers needed"
+                  min="0"
+                  onChange={formik.handleChange}
+                  value={formik.values.volunteersNeeded}
+                />
+              </div>
               <label htmlFor="description" className="label">
                 Description
               </label>
-              {formik.errors.description && formik.touched.description ? (
-                <p className="inputError">{formik.errors.description}</p>
-              ) : null}
-              <textarea
-                className="description-box border"
-                id="description"
-                name="description"
-                placeholder="event description"
-                onChange={formik.handleChange}
-                value={formik.values.description}
-              />
+              <div>
+                {formik.errors.description && formik.touched.description ? (
+                  <p className="inputError">{formik.errors.description}</p>
+                ) : null}
+                <textarea
+                  className="description-box border border-[1.5px] border-blue rounded-[4px]"
+                  id="description"
+                  name="description"
+                  placeholder="event description"
+                  onChange={formik.handleChange}
+                  value={formik.values.description}
+                />
+              </div>
             </div>
-          </div>
 
-          <div className="button-group">
-            {props.action === 'Update Event' ? (
-              <button className="submit form-box" onClick={handleCancel}>
-                Cancel Event
-              </button>
-            ) : null}
-
-            <button className="submit form-box" type="submit">
-              Submit
-            </button>
-          </div>
-        </form>
+            <div className="button-group">
+              <div>
+                <button className="submit form-box" type="submit">
+                  Submit
+                </button>
+              </div>
+              <div>
+                {props.action === 'Update Event' ? (
+                  <button className="submit form-box" onClick={handleCancel}>
+                    Cancel Event
+                  </button>
+                ) : null}
+              </div>
+            </div>
+          </form>
+        </div>
       </section>
     </>
   )
