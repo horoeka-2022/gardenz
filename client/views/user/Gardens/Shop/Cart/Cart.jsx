@@ -5,7 +5,7 @@ import CartItem from '../../../../../subcomponents/Cart/CartItem'
 
 function Cart() {
   const navigate = useNavigate()
-  const cart = window.localStorage.getItem('order')
+  const cart = JSON.parse(localStorage.getItem('order'))
 
   function submitCart() {
     //pass the chosed orders into the deliever page
@@ -16,7 +16,7 @@ function Cart() {
     navigate('/gardens/:id/shop/delievery/:id')
   }
 
-  return cart.length ? (
+  return cart ? (
     <div className="cart">
       <table>
         <thead>
@@ -28,7 +28,7 @@ function Cart() {
         </thead>
         <tbody>
           {cart.map((item, id) => {
-            return <CartItem key={id} item={item} />
+            return <CartItem key={id} items={item} />
           })}
         </tbody>
       </table>

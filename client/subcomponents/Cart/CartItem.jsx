@@ -1,42 +1,55 @@
-// import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-// import { deleteFromCart, updateCart } from '../slices/cart'
+function CartItem(props) {
+  const [items, setItems] = useState([])
+  const [num, setNum] = useState(props.items.quantity)
 
-// function CartItem(props) {
-//   const { name, id, quantity, price } = props.item
+  useEffect(() => {
+    const order = JSON.parse(localStorage.getItem('order'))
+    if (order) {
+      setItems(order)
+    }
+  }, [])
 
-//   function update(e) {
-//     const newQuantity = e.target.value
-//     const isValidQuantity = !isNaN(Number(newQuantity))
-//     if (isValidQuantity) {
-//       const updateInfo = { id, newQuantity }
-//       // dispatch(updateCart(updateInfo))
-//     }
-//   }
+  const { name, id, quantity, price } = props.items
 
-//   function deleteItem() {
-//     // dispatch(deleteFromCart(id))
-//   }
+  function update(e) {
+    const newQuantity = e.target.value
+    const isValidQuantity = !isNaN(Number(newQuantity))
+    if (isValidQuantity) {
+      setItems({ id, name, quantity: newQuantity, price })
+    }
+  }
 
-//   const displayQuantity = quantity === 0 ? '' : quantity
-//   return (
-//     <tr>
-//       <td>{name}</td>
-//       <td>
-//         <input
-//           aria-label="quantity"
-//           className="update-input"
-//           value={displayQuantity}
-//           onChange={update}
-//         />
-//       </td>
-//       <td>
-//         <button aria-label="delete" onClick={deleteItem}>
-//           <span className="fa fa-trash fa-2x" />
-//         </button>
-//       </td>
-//     </tr>
-//   )
-// }
+  // const displayQuantity = quantity === 0 ? '' : quantity
 
-// export default CartItem
+  function decNum() {
+    setNum((num) => num - 1)
+  }
+  function incNum() {
+    setNum((num) => num + 1)
+  }
+
+  return (
+    <tr>
+      <td>{name}</td>
+      <td>{price}</td>
+      <td>
+        <button type="button" onClick={decNum}>
+          -
+        </button>
+        <input
+          aria-label="quantity"
+          className="update-input"
+          value={num}
+          onChange={update}
+        />
+        <button type="button" onClick={incNum}>
+          +
+        </button>
+      </td>
+    </tr>
+  )
+}
+
+export default CartItem
