@@ -22,7 +22,8 @@ export default function GardensList() {
 
   return (
     <section className="container flex mx-auto">
-      <ul className="w-full grid grid-cols-4 gap-4 mt-20">
+      <ul className="w-full grid grid-cols-4 gap-4 mt-20 sm:">
+
         {gardenList.map((garden) => {
           return (
             <li key={garden.id} className="grid">

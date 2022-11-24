@@ -21,8 +21,9 @@ export default function Index() {
   }, [])
 
   return (
-    <section className="container flex mx-auto">
-      <ul className="w-full grid grid-cols-4 gap-4 mt-20">
+    <section className="container flex mx-auto md:px-40 xs:px-8" >
+      <ul className="w-full grid grid-cols-4 gap-8 mt-20 md:grid-cols-2 xs:grid-cols-1 " >
+
         {gardenList.map((garden) => {
           return (
             <li key={garden.id} className="grid">
