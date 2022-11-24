@@ -4,11 +4,10 @@ import { setWaiting, clearWaiting } from '../../../slices/waiting'
 import { showError } from '../../../slices/error'
 
 export async function toggleAttendance(volunteerData, consume = requestor) {
+  const storeState = getState()
+  const { token } = storeState.user
+  dispatch(setWaiting())
   try {
-    const storeState = getState()
-    const { token } = storeState.user
-    dispatch(setWaiting())
-
     await consume('/volunteers', token, 'patch', volunteerData)
     dispatch(clearWaiting())
     return true
