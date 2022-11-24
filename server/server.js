@@ -12,6 +12,7 @@ const gardenProduce = require('./routes/gardenProduce')
 const produceTypes = require('./routes/produceTypes')
 const news = require('./routes/news')
 const gallery = require('./routes/gallery')
+const shop = require('./routes/shop')
 
 const server = express()
 
@@ -29,6 +30,7 @@ server.use('/api/v1/gardenproduce', gardenProduce)
 server.use('/api/v1/producetypes', produceTypes)
 server.use('/api/v1/news', news)
 server.use('/api/v1/gallery', gallery)
+server.use('/api/va/shop',shop)
 
 server.get('*', (req, res) => {
   const appPath = path.join(__dirname, 'public', 'index.html')
