@@ -16,9 +16,9 @@ export async function toggleVolunteerStatus(
   } else {
     dispatch(setWaiting())
   }
+  const routeMethod = willVolunteer ? 'post' : 'delete'
+  const userData = { userId: id, eventId }
   try {
-    const routeMethod = willVolunteer ? 'post' : 'delete'
-    const userData = { userId: id, eventId }
     await consume('/volunteers', token, routeMethod, userData)
     setVolunteering(willVolunteer)
     dispatch(clearWaiting())
