@@ -3,14 +3,13 @@ import { dispatch } from '../../../store'
 import { setWaiting, clearWaiting } from '../../../slices/waiting'
 import { showError } from '../../../slices/error'
 
-export function getProduce(gardenid, consume = requestor) {
-  dispatch(setWaiting())
-  return consume(`/gardenproduce/${gardenid}`)
-    .then((res) => {
-      dispatch(clearWaiting())
-      return res.body
-    })
-    .catch((error) => {
-      dispatch(showError(error.message))
-    })
+export async function getProduce(gardenid, consume = requestor) {
+  try {
+    await dispatch(setWaiting())
+    const produceType = await consume(`/gardenproduce/${gardenid}`)
+    await dispatch(clearWaiting())
+    return produceType.body
+  } catch (error) {
+    dispatch(showError(error.message))
+  }
 }

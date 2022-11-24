@@ -7,7 +7,7 @@ export default function ProduceList({ gardenid }) {
   useEffect(() => {
     const retrieveProduce = async () => {
       const gardenProducts = await getProduce(gardenid)
-      await setProduce(gardenProducts)
+      await setProduce(gardenProducts.produce)
     }
     retrieveProduce()
       .catch(console.error)
