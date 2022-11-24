@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { TfiEmail } from 'react-icons/tfi';
 
 const FindUs = ({ name, address, email, phone }) => {
   return (
@@ -21,6 +23,7 @@ const FindUs = ({ name, address, email, phone }) => {
           <p>{phone}</p>
         </div>
       </div>
+      <Link className='flex items-center' to="/">Sign up to our Newsletter<TfiEmail className='ml-2' /></Link>
     </article>
   )
 }
