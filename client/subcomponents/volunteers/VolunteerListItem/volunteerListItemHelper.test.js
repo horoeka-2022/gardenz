@@ -30,7 +30,6 @@ describe('toggleAttendance', () => {
     expect(dispatch).toHaveBeenCalledWith(setWaiting())
     expect(dispatch).toHaveBeenCalledWith(clearWaiting())
   })
-  ///////////
 
   it('dispatches correctly and returns false on API consumption failure', async () => {
     getState.mockImplementation(() => ({
