@@ -12,9 +12,10 @@ export default function NewsList({ news }) {
           Keeping you updated on your community garden!
         </p>
       </div>
-      <ul>
+      {/* ul needs flex style stuff */}
+      <ul className="w-full grid grid-cols-3 gap-3 mt-20">
         {news.map((news) => (
-          <li key={news.id}>
+          <li className="grid" key={news.id}>
             <News news={news} />
           </li>
         ))}
