@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function StockCounter() {
+function StockQuantity() {
   const [quantity, setQuantity] = useState(0)
 
   function handleIncrement() {
@@ -14,7 +14,7 @@ function StockCounter() {
   return (
     <>
       <p>{quantity}</p>
-      <button className="button" type='button' onClick={handleIncrement}>
+      <button className="button" type="button" onClick={handleIncrement}>
         +
       </button>
       <button onClick={handleDecrement}>-</button>
@@ -22,4 +22,4 @@ function StockCounter() {
   )
 }
 
-export default StockCounter
+export default StockQuantity

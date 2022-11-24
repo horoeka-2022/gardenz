@@ -5,42 +5,48 @@ import { fetchShopList } from './shopHelper'
 import GardenHeader from '../../../../subcomponents/gardens/GardenHeader/GardenHeader'
 import useGarden from '../../../../hooks/useGarden'
 
-import StockCounter from './ShopQuantityButton'
+import ShopListItem from './ShopListItem'
+import StockQuantity from './ShopQuantityButton'
 
-export default function Shop() {
+function Shop() {
   const { id } = useParams()
   const { name, imageHeaderUrl } = useGarden(id)
-  const [shoplist, setShoplist] = useState([])
+  const [shop, setShop] = useState([])
 
   useEffect(() => {
     fetchShopList()
-      .then((shoplist) => {
-        setShoplist(() => shoplist)
+      .then((shop) => {
+        setShop(() => shop)
       })
       .catch((err) => {
         console.error(err.message)
       })
   }, [])
 
+  function addProductToCart(item) {
+    const { id, name, quantity } = item
+    const newCartItem = { id, name, quantity }
+  }
+
   return (
     <>
       <GardenHeader name={name} url={imageHeaderUrl} />
       <p>A shop will be here.</p>
-      <ul>
-        {shoplist.map((item) => (
-          <li key={item.id}>
-            {item.name} ${item.price}
-            <img src={item.image} alt="veggie boxes"></img>
-            <button
-              type="basketButton"
-              className=".inline-block bg-green text-black font-bold py-2 px-4 rounded"
-            >
-              add to basket
-            </button>
-          </li>
-        ))}
-        <StockCounter />
-      </ul>
+
+      {shop.map((item) => {
+        return (
+          <>
+            <ShopListItem
+              key={item.id}
+              product={item}
+              addToCart={addProductToCart}
+            />
+            <StockQuantity />
+          </>
+        )
+      })}
     </>
   )
 }
+
+export default Shop
