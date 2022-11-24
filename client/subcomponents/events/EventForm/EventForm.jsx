@@ -40,7 +40,7 @@ export default function EventForm(props) {
 
   return (
     <>
-      <section className="mx-auto max-w-md mt-9 ">
+      <section className="mx-auto max-w-md mt-9 px-8">
         <div className="">
           <h2 className="form-title text-darkBlue text-[24px] font-serif py-3">
             {props.action}
@@ -48,7 +48,7 @@ export default function EventForm(props) {
 
           <form className="form-content" onSubmit={formik.handleSubmit}>
             <div className="field">
-              <label htmlFor="title" className="label">
+              <label htmlFor="title" className="label text-black">
                 Event Title
               </label>
               <div>
@@ -56,7 +56,7 @@ export default function EventForm(props) {
                   <p className="inputError">{formik.errors.title}</p>
                 ) : null}
                 <input
-                  className="form-box border border-[1.5px] border-blue rounded-[4px]"
+                  className="form-box border border-[1.5px] border-blue rounded-[4px] p-2 w-full mb-5"
                   id="title"
                   name="title"
                   type="text"
@@ -65,7 +65,7 @@ export default function EventForm(props) {
                   value={formik.values.title}
                 />
               </div>
-              <label htmlFor="date" className="label">
+              <label htmlFor="date" className="label text-black">
                 Date
               </label>
               <div>
@@ -73,7 +73,7 @@ export default function EventForm(props) {
                   <p className="inputError">{formik.errors.date}</p>
                 ) : null}
                 <input
-                  className="form-box border border-[1.5px] border-blue rounded-[4px]"
+                  className="form-box border border-[1.5px] border-blue rounded-[4px] p-2 w-full mb-5"
                   id="date"
                   name="date"
                   type="date"
@@ -83,7 +83,7 @@ export default function EventForm(props) {
                   value={formik.values.date}
                 />
               </div>
-              <label htmlFor="volunteersNeeded" className="label">
+              <label htmlFor="volunteersNeeded" className="label text-black">
                 Volunteers Needed
               </label>
               <div>
@@ -92,7 +92,7 @@ export default function EventForm(props) {
                   <p className="inputError">{formik.errors.volunteersNeeded}</p>
                 ) : null}
                 <input
-                  className="form-box border border-[1.5px] border-blue rounded-[4px]"
+                  className="form-box border border-[1.5px] border-blue rounded-[4px] p-2 w-full mb-5"
                   id="volunteersNeeded"
                   name="volunteersNeeded"
                   type="number"
@@ -102,7 +102,7 @@ export default function EventForm(props) {
                   value={formik.values.volunteersNeeded}
                 />
               </div>
-              <label htmlFor="description" className="label">
+              <label htmlFor="description" className="label text-black">
                 Description
               </label>
               <div>
@@ -110,7 +110,7 @@ export default function EventForm(props) {
                   <p className="inputError">{formik.errors.description}</p>
                 ) : null}
                 <textarea
-                  className="description-box border border-[1.5px] border-blue rounded-[4px]"
+                  className="description-box border border-[1.5px] border-blue rounded-[4px] p-2 pb-[7em] w-full"
                   id="description"
                   name="description"
                   placeholder="event description"
