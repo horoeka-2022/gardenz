@@ -27,31 +27,37 @@ export default function NewsForm(props) {
   return (
     <>
       <section className="py-12 flex-auto text-center items-center justify-center">
-        <h2 className="form-title items-center">{props.action}</h2>
+        <h2 className="font-serif	text-xl form-title items-center">
+          {props.action}
+        </h2>
         <form
           className="form-content flex-auto text-center items-center justify-center flex-col"
           onSubmit={formik.handleSubmit}
         >
-          <div className="field items-center justify-center flex-col">
-            <div>
+          <div className="py-4 field items-center justify-center flex-col">
+            <div className="py-8 items-center justify-center flex-col">
               {' '}
               <label htmlFor="title" className="label">
                 News Title
               </label>
-              <Conditional
-                condition={formik.errors.title && formik.touched.title}
-              >
-                <p className="inputError">{formik.errors.title}</p>
-              </Conditional>
-              <input
-                className="form-box"
-                id="title"
-                name="title"
-                type="text"
-                placeholder="news title"
-                onChange={formik.handleChange}
-                value={formik.values.title}
-              />
+              <div className="py-2 field text-center justify-center flex-col">
+                <Conditional
+                  condition={formik.errors.title && formik.touched.title}
+                >
+                  <p className="inputError">{formik.errors.title}</p>
+                </Conditional>
+              </div>
+              <div className="py-2 field text-center justify-center flex-col">
+                <input
+                  className="form-box"
+                  id="title"
+                  name="title"
+                  type="text"
+                  placeholder="news title"
+                  onChange={formik.handleChange}
+                  value={formik.values.title}
+                />
+              </div>
             </div>
             <div className="items-center justify-center flex-col">
               <label htmlFor="content" className="label">
