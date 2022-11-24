@@ -4,7 +4,7 @@ exports.seed = async function (knex) {
   await knex('garden_shop').insert([
     {
       id: 1,
-      garden_id: 3,
+      gardens_id: 3,
       shop_products_id: 2,
       stock: 15,
     },

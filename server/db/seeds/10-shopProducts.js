@@ -10,5 +10,13 @@ exports.seed = async function (knex) {
       price: 29,
       image: 'www.linktowhereeverthisimageis.com',
     },
+    {
+      id: 2,
+      name: 'small veggie box',
+      description:
+        'a small box filled with fresh seasonal produce grown at your local garden',
+      price: 22,
+      image: 'www.linktowhereeverthisimageis.com',
+    },
   ])
 }

@@ -30,7 +30,7 @@ server.use('/api/v1/gardenproduce', gardenProduce)
 server.use('/api/v1/producetypes', produceTypes)
 server.use('/api/v1/news', news)
 server.use('/api/v1/gallery', gallery)
-server.use('/api/va/shop',shop)
+server.use('/api/v1/shop', shop)
 
 server.get('*', (req, res) => {
   const appPath = path.join(__dirname, 'public', 'index.html')
