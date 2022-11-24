@@ -1,8 +1,8 @@
 const connection = require('./connection')
 
-module.exports = { getProductsByGardens }
+module.exports = { getProductsByGarden }
 
-function getProductsByGardens(gardenId, db = connection) {
+function getProductsByGarden(gardenId, db = connection) {
   return db('garden_shop')
     .join('shop_products', 'shop_products_id', 'shop_products.id')
     .select(

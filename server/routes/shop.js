@@ -12,7 +12,7 @@ router.get('/:id', async (req, res) => {
   try {
     const { id } = req.params
     const gardenId = id
-    const products = await db.getProductsByGardens(gardenId)
+    const products = await db.getProductsByGarden(gardenId)
     res.json(products)
   } catch (err) {
     log(err.message)
