@@ -18,11 +18,10 @@ export default function Event() {
   const user = useSelector((globalState) => globalState.user)
 
   useEffect(() => {
-    // eslint-disable-next-line promise/catch-or-return
-    getEvent(id, user).then((event) => {
+    ;(async () => {
+      const event = await getEvent(id, user)
       setEvent(event)
-      return null
-    })
+    })()
   }, [user, id])
 
   function addExtraVolunteer(newVolunteer) {
