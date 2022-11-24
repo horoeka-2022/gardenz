@@ -26,16 +26,36 @@ function Gallery() {
   return (
     <>
       <GardenHeader name={name} url={imageHeaderUrl} />
-      <section>
-        <LightGallery speed={500} plugins={[lgThumbnail, lgZoom]}>
-          <a href="/images/comGardenPlant.png">
-            <img src="/images/comGardenPlant.png" alt="garden image1" />
-          </a>
-          <a href="/images/comGardenRows.png">
-            <img src="/images/comGardenRows.png" alt="garden image2" />
-          </a>
-        </LightGallery>
-      </section>
+      <main className="container mx-auto">
+        <section className="flex flex-wrap">
+          <LightGallery speed={500} plugins={[lgThumbnail, lgZoom]}>
+            <a
+              className="w-64 my-4 mx-4 p-6 rounded-md border-2 shadow-xl flex flex-col justify-around"
+              href="/images/comGardenPlant.png"
+            >
+              <img src="/images/comGardenPlant.png" alt="garden image1" />
+            </a>
+            <a
+              className="w-64 my-4 mx-4 p-6 rounded-md border-2 shadow-xl flex flex-col justify-around"
+              href="/images/comGardenRows.png"
+            >
+              <img src="/images/comGardenRows.png" alt="garden image2" />
+            </a>
+            <a
+              className="w-64 my-4 mx-4 p-6 rounded-md border-2 shadow-xl flex flex-col justify-around"
+              href="/images/comGardenRows.png"
+            >
+              <img src="/images/comGardenRows.png" alt="garden image3" />
+            </a>
+            <a
+              className="w-64 my-4 mx-4 p-6 rounded-md border-2 shadow-xl flex flex-col justify-around"
+              href="/images/comGardenRows.png"
+            >
+              <img src="/images/comGardenRows.png" alt="garden image4" />
+            </a>
+          </LightGallery>
+        </section>
+      </main>
     </>
   )
 }
