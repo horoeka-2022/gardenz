@@ -40,8 +40,10 @@ export default function EventForm(props) {
 
   return (
     <>
-      <section>
-        <h2 className="form-title">{props.action}</h2>
+      <section className="container md:flex mx-auto mt-5 content-center">
+        <h2 className="form-title text-darkBlue text-[24px] font-serif">
+          {props.action}
+        </h2>
         <form className="form-content" onSubmit={formik.handleSubmit}>
           <div className="field">
             <label htmlFor="title" className="label">
@@ -51,7 +53,7 @@ export default function EventForm(props) {
               <p className="inputError">{formik.errors.title}</p>
             ) : null}
             <input
-              className="form-box"
+              className="form-box border"
               id="title"
               name="title"
               type="text"
@@ -67,7 +69,7 @@ export default function EventForm(props) {
               <p className="inputError">{formik.errors.date}</p>
             ) : null}
             <input
-              className="form-box"
+              className="form-box border"
               id="date"
               name="date"
               type="date"
@@ -85,7 +87,7 @@ export default function EventForm(props) {
               <p className="inputError">{formik.errors.volunteersNeeded}</p>
             ) : null}
             <input
-              className="form-box"
+              className="form-box border"
               id="volunteersNeeded"
               name="volunteersNeeded"
               type="number"
@@ -95,20 +97,22 @@ export default function EventForm(props) {
               value={formik.values.volunteersNeeded}
             />
 
-            <label htmlFor="description" className="label">
-              Description
-            </label>
-            {formik.errors.description && formik.touched.description ? (
-              <p className="inputError">{formik.errors.description}</p>
-            ) : null}
-            <textarea
-              className="description-box"
-              id="description"
-              name="description"
-              placeholder="event description"
-              onChange={formik.handleChange}
-              value={formik.values.description}
-            />
+            <div>
+              <label htmlFor="description" className="label">
+                Description
+              </label>
+              {formik.errors.description && formik.touched.description ? (
+                <p className="inputError">{formik.errors.description}</p>
+              ) : null}
+              <textarea
+                className="description-box border"
+                id="description"
+                name="description"
+                placeholder="event description"
+                onChange={formik.handleChange}
+                value={formik.values.description}
+              />
+            </div>
           </div>
 
           <div className="button-group">
