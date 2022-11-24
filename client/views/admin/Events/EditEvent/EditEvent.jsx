@@ -13,11 +13,12 @@ export default function EditEvent() {
   const user = useSelector((globalState) => globalState.user)
 
   useEffect(() => {
-    // eslint-disable-next-line promise/catch-or-return
-    getEvent(id, user).then((eventData) => {
+    ;(async () => {
+      // eslint-disable-next-line promise/catch-or-return
+      const eventData = await getEvent(id, user)
       setEvent(eventData)
-      return null
-    })
+    })()
+    return () => {}
   }, [])
 
   function submitEvent(form) {
