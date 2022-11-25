@@ -61,7 +61,6 @@ export default function UserNav() {
 
         </div>
       </nav>
-      <GardenHeader />
     </>
   )
 }
