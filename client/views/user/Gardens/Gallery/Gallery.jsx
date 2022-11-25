@@ -15,47 +15,77 @@ import 'lightgallery/css/lg-thumbnail.css'
 import lgThumbnail from 'lightgallery/plugins/thumbnail'
 import lgZoom from 'lightgallery/plugins/zoom'
 
+// import GalleryItem from './GalleryItem'
+
 function Gallery() {
   const { id } = useParams()
   const { name, imageHeaderUrl } = useGarden(id)
+  const images = [
+    {
+      name: 'garden image1',
+      url: '/images/galleryPlaceHolder01.jpg',
+      garden_id: id,
+    },
+    {
+      name: 'garden image2',
+      url: '/images/galleryPlaceHolder02.jpg',
+      garden_id: id,
+    },
+    {
+      name: 'garden image3',
+      url: '/images/galleryPlaceHolder03.jpg',
+      garden_id: id,
+    },
+    {
+      name: 'garden image4',
+      url: '/images/galleryPlaceHolder04.jpg',
+      garden_id: id,
+    },
+    {
+      name: 'garden image5',
+      url: '/images/galleryPlaceHolder01.jpg',
+      garden_id: id,
+    },
+    {
+      name: 'garden image6',
+      url: '/images/galleryPlaceHolder02.jpg',
+      garden_id: id,
+    },
+    {
+      name: 'garden image7',
+      url: '/images/galleryPlaceHolder03.jpg',
+      garden_id: id,
+    },
+    {
+      name: 'garden image8',
+      url: '/images/galleryPlaceHolder04.jpg',
+      garden_id: id,
+    },
+  ]
 
-  function LightGalleryItem(props) {
+  function GalleryItem(props) {
+    const { name, url } = props.image
     return (
-      <a href={props.src}>
-        <img className="p-10" src={props.src} alt={props.alt} />
-      </a>
+      <figure className="w-64 p-1.5 flex flex-col justify-around">
+        <a href={url}>
+          <img src={url} alt={name} />
+        </a>
+      </figure>
     )
   }
 
   return (
     <>
       <GardenHeader name={name} url={imageHeaderUrl} />
-        <LightGallery
-          mode="lg-fade"
-          plugins={[lgThumbnail, lgZoom]}
-          elementClassNames="flex flex-wrap"
-        >
-          <LightGalleryItem
-            src="/images/comGardenPlant.png"
-            alt="garden image1"
-          />
-          <LightGalleryItem
-            src="/images/comGardenRows.png"
-            alt="garden image2"
-          />
-          <LightGalleryItem
-            src="/images/comGardenRows.png"
-            alt="garden image3"
-          />
-          <LightGalleryItem
-            src="/images/comGardenRows.png"
-            alt="garden image4"
-          />
-          <LightGalleryItem
-            src="/images/comGardenRows.png"
-            alt="garden image5"
-          />
-        </LightGallery>
+      <LightGallery
+        mode="lg-fade"
+        plugins={[lgThumbnail, lgZoom]}
+        elementClassNames="flex flex-wrap py-20 px-10"
+      >
+        {images.map((imageObj) => {
+          return <GalleryItem key={imageObj.name} image={imageObj} />
+        })}
+      </LightGallery>
     </>
   )
 }

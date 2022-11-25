@@ -16,7 +16,7 @@ export default function Event() {
   const [event, setEvent] = useState({})
 
   const user = useSelector((globalState) => globalState.user)
-  
+
   useEffect(() => {
     ;(async () => {
       const event = await getEvent(id, user)
