@@ -22,9 +22,9 @@ function Shop() {
       })
   }, [])
 
-  function addProductToCart(item) {
-    const { id, name, quantity } = item
-    const newCartItem = { id, name, quantity }
+  function addProductToCart(item, quantity) {
+    const { id, name, price } = item
+    const newCartItem = { id, name, quantity, price }
     localStorage.setItem('order', JSON.stringify(newCartItem))
   }
 
@@ -41,7 +41,6 @@ function Shop() {
               product={item}
               addToCart={addProductToCart}
             />
-            {/* <StockQuantity /> */}
           </>
         )
       })}

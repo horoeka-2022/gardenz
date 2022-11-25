@@ -13,7 +13,8 @@ function ShopListItem({ product, addToCart }) {
   }
 
   function addNewCart() {
-    addToCart(product)
+    console.log({ product, quantity })
+    addToCart(product, quantity)
   }
 
   return (
