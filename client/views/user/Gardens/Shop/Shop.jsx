@@ -6,7 +6,6 @@ import GardenHeader from '../../../../subcomponents/gardens/GardenHeader/GardenH
 import useGarden from '../../../../hooks/useGarden'
 
 import ShopListItem from './ShopListItem'
-import StockQuantity from './ShopQuantityButton'
 
 function Shop() {
   const { id } = useParams()
@@ -26,6 +25,7 @@ function Shop() {
   function addProductToCart(item) {
     const { id, name, quantity } = item
     const newCartItem = { id, name, quantity }
+    localStorage.setItem('order', JSON.stringify(newCartItem))
   }
 
   return (
@@ -41,7 +41,7 @@ function Shop() {
               product={item}
               addToCart={addProductToCart}
             />
-            <StockQuantity />
+            {/* <StockQuantity /> */}
           </>
         )
       })}

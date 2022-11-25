@@ -1,7 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 // import Shop from './Shop'
 
 function ShopListItem({ product, addToCart }) {
+  const [quantity, setQuantity] = useState(1)
+
+  function handleIncrement() {
+    setQuantity((quantity) => quantity + 1)
+  }
+
+  function handleDecrement() {
+    if (quantity > 1) setQuantity((quantity) => quantity - 1)
+  }
+
   function addNewCart() {
     addToCart(product)
   }
@@ -14,6 +24,11 @@ function ShopListItem({ product, addToCart }) {
       <button className="cart-link" onClick={addNewCart}>
         add to basket
       </button>
+      <p>{quantity}</p>
+      <button className="button" type="button" onClick={handleIncrement}>
+        +
+      </button>
+      <button onClick={handleDecrement}>-</button>
     </div>
   )
 }
