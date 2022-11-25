@@ -31,7 +31,7 @@ export default function About() {
             address={address}
             location={location}
           />
-          <FindUs name={name} address={address} email={email} phone={phone} />
+          <FindUs name={name} address={address} email={email} phone={phone} id={id} url={imageHeaderUrl} />
         </div>
       </main>
     </>

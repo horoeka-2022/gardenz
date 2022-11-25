@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { TfiEmail } from 'react-icons/tfi';
 
-const FindUs = ({ name, address, email, phone }) => {
+const FindUs = ({ name, address, email, phone, id, url }) => {
   return (
     <article className="rounded-lg shadow-lg p-6">
       <h4 className="underline font-bold"> FIND US</h4>
@@ -23,7 +23,7 @@ const FindUs = ({ name, address, email, phone }) => {
           <p>{phone}</p>
         </div>
       </div>
-      <Link className='flex items-center' to="/">Sign up to our Newsletter<TfiEmail className='ml-2' /></Link>
+      <Link url={url} className='flex items-center' to={`/gardens/${id}/signup`}>Sign up to our Newsletter<TfiEmail className='ml-2' /></Link>
     </article>
   )
 }
