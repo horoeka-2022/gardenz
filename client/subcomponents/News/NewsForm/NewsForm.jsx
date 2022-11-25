@@ -26,96 +26,72 @@ export default function NewsForm(props) {
 
   return (
     <>
-      <section className="py-12 flex-auto text-center items-center justify-center">
-        <h2 className="font-serif	text-xl form-title items-center">
+      <section className="py-12 ">
+        <h2 className="font-serif	text-xl form-title text-center">
           {props.action}
         </h2>
-        <form
-          className="form-content flex-auto text-center items-center justify-center flex-col"
-          onSubmit={formik.handleSubmit}
-        >
-          <div className="py-4 field items-center justify-center flex-col">
-            <div className="py-8 items-center justify-center flex-col">
-              {' '}
-              <label htmlFor="title" className="label">
-                News Title
-              </label>
-              <div className="py-2 field text-center justify-center flex-col">
-                <Conditional
-                  condition={formik.errors.title && formik.touched.title}
-                >
-                  <p className="inputError">{formik.errors.title}</p>
-                </Conditional>
+        <div className="flex justify-center">
+          <form className="form-content" onSubmit={formik.handleSubmit}>
+            <div className="py-1 field">
+              <div className="py-8">
+                <label htmlFor="title" className="label border-3 NEWS TITLE">
+                  News Title
+                </label>
+                <div className="field">
+                  <Conditional
+                    condition={formik.errors.title && formik.touched.title}
+                  >
+                    <p className="inputError text-red text-xs">
+                      {formik.errors.title}
+                    </p>
+                  </Conditional>
+                </div>
+                <div className="py-1 field">
+                  <input
+                    className="form-box border-2"
+                    id="title"
+                    name="title"
+                    type="text"
+                    placeholder="news title"
+                    utton-group
+                    items-center
+                    block
+                    onChange={formik.handleChange}
+                    value={formik.values.title}
+                  />
+                </div>
               </div>
-              <div className="py-2 field text-center justify-center flex-col">
-                <input
-                  className="form-box"
-                  id="title"
-                  name="title"
-                  type="text"
-                  placeholder="news title"
-                  onChange={formik.handleChange}
-                  value={formik.values.title}
-                />
-              </div>
-            </div>
-            <div className="items-center justify-center flex-col">
+
               <label htmlFor="content" className="label">
                 Content
               </label>
-              <Conditional
-                condition={formik.errors.content && formik.touched.content}
-              >
-                <p className="inputError">{formik.errors.content}</p>
-              </Conditional>
-
-              <textarea
-                className="content-box"
-                id="content"
-                name="content"
-                placeholder="news content"
-                onChange={formik.handleChange}
-                value={formik.values.content}
-              />
             </div>
-          </div>
+            <Conditional
+              condition={formik.errors.content && formik.touched.content}
+            >
+              <p className="inputError text-red text-xs">
+                {formik.errors.content}
+              </p>
+            </Conditional>
 
-          <div className="button-group items-center justify-center flex-col">
-            <button className="submit form-box" type="submit">
+            <textarea
+              className="content-box border-2 h-32"
+              id="content"
+              name="content"
+              placeholder="news content"
+              onChange={formik.handleChange}
+              value={formik.values.content}
+            />
+
+            <button
+              className="block ml-auto mr-auto submit form-box w-32 mt-5 p-3 text-center rounded-md text-white bg-orange transition ease-in-out hover:bg-orange hover:-translate-y-1 hover:scale-110 duration-300"
+              type="submit"
+            >
               Submit
             </button>
-          </div>
-        </form>
+          </form>
+        </div>
       </section>
     </>
   )
 }
-
-//////
-
-// // garden logo image
-// <section class="container lg:flex items-center justify-between mx-auto">
-// <img src="/images/gardenzLogoNew.svg" alt="gardenzlogo" class="w-60">
-// <a href="/">
-// </a>
-
-// <nav class="hidden w-full lg:flex justify-between items-center lg:items-center lg:w-auto">
-
-// {/* Home and logout on top right */}
-//   <div class="lg:flex text-center md:text-align">
-//     <a class="text-white hover:text-green block my-6 py-2 px-6" href="/">Change Garden</a>
-//     <a href="/" class="text-white hover:text-green block my-6 py-2 px-6">Sign out</a>
-//   </div>
-// </nav>
-
-// {/* about us - shop */}
-// <nav>
-//   <div class="lg:flex flex-row text-center md:text-align bg-lightGreen">
-//     <a class="text-white hover:text-green block my-6  py-2 px-6 basis-1/4 " href="/gardens/1/about">Update Cover Photo</a>
-//     <a class="text-white hover:text-green block my-6  py-2 px-6 basis-1/4  " href="/gardens/1/events">Add/Edit Events</a>
-//     <a class="text-orange hover:text-green block my-6 py-2 px-6 basis-1/4 " href="/gardens/1/news" aria-current="page">Post News</a>
-//     <a class="text-white hover:text-green block my-6  py-2 px-6 basis-1/4 " href="/gardens/1/gallery">Update Gallery</a>
-//     <a class="text-white hover:text-green block my-6  py-2 px-6 basis-1/4 " href="/gardens/1/shop">Manage Orders</a>
-//     <a class="text-white hover:text-green block my-6  py-2 px-6 basis-1/4 " href="/gardens/1/shop">Volunteers</a>
-//   </div>
-// </nav>
