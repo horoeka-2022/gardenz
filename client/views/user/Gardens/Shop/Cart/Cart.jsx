@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import CartItem from '../../../../../subcomponents/Cart/CartItem'
@@ -6,10 +6,26 @@ import CartItem from '../../../../../subcomponents/Cart/CartItem'
 function Cart() {
   const navigate = useNavigate()
   const cart = JSON.parse(localStorage.getItem('order'))
+  const [items, setItems] = useState(cart)
+  // useEffect(() => {
+  //   localStorage.setItem('order', JSON.stringify(items))
+  //   const order = JSON.parse(localStorage.getItem('order'))
+  //   if (order) {
+  //     setItems(order)
+  //   }
+  // }, [])
+
+  //define the useState() later
+  const [calculateTotal, setCalculateTotal] = useState()
 
   function submitCart() {
     //pass the chosed orders into the deliever page
-    window.localStorage.getItem('order')
+    const { name, id, quantity, price } = items
+    localStorage.setItem('order', JSON.stringify(items))
+    const order = JSON.parse(localStorage.getItem('order'))
+    if (order) {
+      setItems(order)
+    }
     {
       /*change the url link with dynamic id later */
     }
