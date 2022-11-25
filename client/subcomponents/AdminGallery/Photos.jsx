@@ -10,7 +10,6 @@ function Photos() {
   useEffect(() => {
     const fetchPhotos = async () => {
       const data = await consume(`/gallery/${id}`, '', 'get', {})
-      console.log(data.body)
       setPhotos(() => data.body)
     }
     fetchPhotos()
@@ -20,9 +19,9 @@ function Photos() {
     <>
       {photos.map((photo) => {
         return (
-          <div key={photo.name} className="m-2 basis-1/7">
+          <div key={photo.name} className="m-2 h-1/7 w-1/7">
             <img
-              className="h-full w-full"
+              className="object-cover h-auto"
               src={photo.url}
               alt={photo.name}
             ></img>
