@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams, NavLink } from 'react-router-dom'
-import GardenHeader from '../gardens/GardenHeader/GardenHeader'
+
 
 export default function UserNav() {
   const { id } = useParams()
