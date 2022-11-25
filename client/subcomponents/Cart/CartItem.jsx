@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react'
 function CartItem(props) {
   const [items, setItems] = useState([])
   const [num, setNum] = useState(props.items.quantity)
+  const [calculateTotal, setCalculateTotal] = useState(
+    props.items.price * props.items.quantity
+  )
 
   useEffect(() => {
     const order = JSON.parse(localStorage.getItem('order'))
@@ -15,9 +18,14 @@ function CartItem(props) {
 
   function update(e) {
     const newQuantity = e.target.value
+    console.log(newQuantity)
     const isValidQuantity = !isNaN(Number(newQuantity))
     if (isValidQuantity) {
-      setItems({ id, name, quantity: newQuantity, price })
+      setItems([...items, { id, name, quantity: newQuantity, price }])
+      // const items = { id, name, quantity: newQuantity, price }
+
+      localStorage.setItem('order', JSON.stringify(items))
+      setCalculateTotal(props.items.price * newQuantity)
     }
   }
 
@@ -31,24 +39,30 @@ function CartItem(props) {
   }
 
   return (
-    <tr>
-      <td>{name}</td>
-      <td>{price}</td>
-      <td>
-        <button type="button" onClick={decNum}>
-          -
-        </button>
-        <input
-          aria-label="quantity"
-          className="update-input"
-          value={num}
-          onChange={update}
-        />
-        <button type="button" onClick={incNum}>
-          +
-        </button>
-      </td>
-    </tr>
+    <>
+      <tr>
+        <td>{name}</td>
+        <td>{price}</td>
+        <td>
+          <button type="button" onClick={decNum}>
+            -
+          </button>
+          <input
+            aria-label="quantity"
+            className="update-input"
+            value={num}
+            onChange={update}
+          />
+          <button type="button" onClick={incNum}>
+            +
+          </button>
+        </td>
+      </tr>
+      <td role="columnheader">Shipping</td>
+      <td role="columnheader">Calculated at checkout</td>
+      <td>Total(inc. GST)</td>
+      <td>{calculateTotal}</td>
+    </>
   )
 }
 
