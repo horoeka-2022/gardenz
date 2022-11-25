@@ -9,7 +9,7 @@ router.get('/:gardenid', (req, res) => {
   const galleryId = req.params.gardenid
   db.getImages(galleryId)
     .then((photos) => {
-      res.json(photos)
+      res.json({ photos })
     })
     .catch((err) => {
       log(err.message)
