@@ -32,20 +32,22 @@ function Shop() {
     <>
       <GardenHeader name={name} url={imageHeaderUrl} />
       <p>A shop will be here.</p>
-
-      {shop.map((item) => {
-        return (
-          <>
-            <ShopListItem
-              key={item.id}
-              product={item}
-              addToCart={addProductToCart}
-            />
-          </>
-        )
-      })}
+      <div className="border-inherit rounded grid justify-items-center grid-cols-2 sm:grid-cols-2 md:grid-cols-2 mb-8 gap-2 border-2">
+        {shop.map((item) => {
+          return (
+            <>
+              <ShopListItem
+                key={item.id}
+                product={item}
+                addToCart={addProductToCart}
+              />
+            </>
+          )
+        })}
+      </div>
     </>
   )
 }
 
+// <div className="flex-none object-contain h-40 w-30 grid grid-cols-2 gap-1 content-center ... ">
 export default Shop
