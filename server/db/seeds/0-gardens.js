@@ -25,7 +25,7 @@ exports.seed = (knex) => {
           lat: -36.86983345249252,
           lon: 174.74701843955708,
           image_header_url:
-            'https://ourauckland.aucklandcouncil.govt.nz/media/rxmorx50/kingsland-orchard.jpg?anchor=center&mode=crop&width=680&rnd=132925283269130000',
+            'https://www.bikeauckland.org.nz/wp-content/uploads/2016/09/beehivepic.jpg',
           email: 'kingslandurbangarden@gmail.com',
           phone: '09 123 4567',
         },
@@ -37,7 +37,7 @@ exports.seed = (knex) => {
           lat: -36.82514374209753,
           lon: 174.80311208557973,
           image_header_url:
-            'https://ourauckland.aucklandcouncil.govt.nz/media/rxmorx50/kingsland-orchard.jpg?anchor=center&mode=crop&width=680&rnd=132925283269130000',
+            'https://imgix.theurbanlist.com/content/article/2015-10-26+13.01.28.jpg',
           email: 'hello@devenportcommunitygarden.com',
           phone: '09 123 4567',
         },
@@ -50,7 +50,7 @@ exports.seed = (knex) => {
           lat: -36.896282,
           lon: 174.722987,
           image_header_url:
-            'https://lh5.googleusercontent.com/p/AF1QipOZn56IjxPwz49Mq41TFxetLwGMcvLmOwPkvwfN=w500-k-no',
+            'https://resources.stuff.co.nz/content/dam/images/1/4/d/r/n/u/image.gallery.galleryLandscape.1151x768.14gqo7.png/1429674627831.jpg',
           email: 'hello@owairakacommunitygarden.com',
           phone: '09 123 4567',
         },
@@ -64,7 +64,7 @@ exports.seed = (knex) => {
           lat: -36.977468,
           lon: 174.793402,
           image_header_url:
-            'https://aucklandteachinggardens.co.nz/wp-content/uploads/2020/05/us-hydroponic-tomatoes.jpg',
+            'https://resources.stuff.co.nz/content/dam/images/4/y/n/h/z/8/image.related.StuffLandscapeSixteenByNine.1420x800.4yni05.png/1596406965593.jpg',
           email: 'hello@aucklandteachinggardens.co.nz',
           phone: '09 123 4567',
         },
