@@ -46,9 +46,12 @@ export default function EventForm(props) {
             {props.action}
           </h2>
 
-          <form className="form-content" onSubmit={formik.handleSubmit}>
+          <form
+            className="form-content text-[16px] text-black"
+            onSubmit={formik.handleSubmit}
+          >
             <div className="field">
-              <label htmlFor="title" className="label text-black">
+              <label htmlFor="title" className="label">
                 Event Title
               </label>
               <div>
@@ -60,12 +63,11 @@ export default function EventForm(props) {
                   id="title"
                   name="title"
                   type="text"
-                  placeholder="event title"
                   onChange={formik.handleChange}
                   value={formik.values.title}
                 />
               </div>
-              <label htmlFor="date" className="label text-black">
+              <label htmlFor="date" className="label">
                 Date
               </label>
               <div>
@@ -78,12 +80,11 @@ export default function EventForm(props) {
                   name="date"
                   type="date"
                   role="date"
-                  placeholder="date"
                   onChange={formik.handleChange}
                   value={formik.values.date}
                 />
               </div>
-              <label htmlFor="volunteersNeeded" className="label text-black">
+              <label htmlFor="volunteersNeeded" className="label">
                 Volunteers Needed
               </label>
               <div>
@@ -96,7 +97,6 @@ export default function EventForm(props) {
                   id="volunteersNeeded"
                   name="volunteersNeeded"
                   type="number"
-                  placeholder="volunteers needed"
                   min="0"
                   onChange={formik.handleChange}
                   value={formik.values.volunteersNeeded}
@@ -110,10 +110,9 @@ export default function EventForm(props) {
                   <p className="inputError">{formik.errors.description}</p>
                 ) : null}
                 <textarea
-                  className="description-box border border-[1.5px] border-blue rounded-[4px] p-2 pb-[7em] w-full"
+                  className="description-box border border-[1.5px] border-blue rounded-[4px] p-2 pb-[7em] w-full mb-3"
                   id="description"
                   name="description"
-                  placeholder="event description"
                   onChange={formik.handleChange}
                   value={formik.values.description}
                 />
@@ -122,13 +121,18 @@ export default function EventForm(props) {
 
             <div className="button-group">
               <div>
-                <button className="submit form-box" type="submit">
+                <button
+                  className="submit form-box h-7 w-48 bg-orange text-white font-bold rounded-[4px]"
+                  type="submit"
+                >
                   Submit
                 </button>
-              </div>
-              <div>
+
                 {props.action === 'Update Event' ? (
-                  <button className="submit form-box" onClick={handleCancel}>
+                  <button
+                    className="submit form-box h-7 w-48 font-bold rounded-[4px]"
+                    onClick={handleCancel}
+                  >
                     Cancel Event
                   </button>
                 ) : null}
