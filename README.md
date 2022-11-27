@@ -353,9 +353,9 @@ Response (201)
 ___
 ## Database schema (proposal)
 
-This has grown and will continue to grow as we add new tables
-[Gardenz ERD on dbdiagram.io](https://dbdiagram.io/d/5f61c9407da1ea736e2e0bda)
-___
+![Gardenz Entity Relationship Diagram](docs/erd.png)
+[Gardenz ERD on dbdiagram.io](https://dbdiagram.io/d/637fe701c9abfc61117513cd)
+
 ## Sendgrid
 
 Email notifications are being sent via https://sendgrid.com/ from the address admin@gardenz.eda.nz

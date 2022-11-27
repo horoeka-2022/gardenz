@@ -15,6 +15,7 @@ When a large team works on a project together, it's important to keep your branc
 7. Move your Github Issues task ticket into the review column.
 8. Ask a teacher for a code review and fix any issues.  Retest your feature.
 9. After a teacher reviews and approves your PR, **_merge it to dev_**.
+10. Great success!
 
 <details><summary>Flow Diagram</summary>
 
