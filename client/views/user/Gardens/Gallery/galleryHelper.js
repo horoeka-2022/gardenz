@@ -7,7 +7,7 @@ export function getGalleryImages(gardenId, consume = requestor) {
   dispatch(setWaiting())
   return consume(`/gallery/${gardenId}`)
     .then((res) => {
-      return res.body.photos
+      return res.body.images
     })
     .finally(() => {
       dispatch(clearWaiting())
