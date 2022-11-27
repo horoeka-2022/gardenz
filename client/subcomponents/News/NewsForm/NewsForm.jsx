@@ -34,7 +34,7 @@ export default function NewsForm(props) {
           <form className="form-content" onSubmit={formik.handleSubmit}>
             <div className="py-1 field">
               <div className="py-8">
-                <label htmlFor="title" className="label border-3 NEWS TITLE">
+                <label htmlFor="title" className="label border-3">
                   News Title
                 </label>
                 <div className="field">
@@ -48,7 +48,7 @@ export default function NewsForm(props) {
                 </div>
                 <div className="py-1 field">
                   <input
-                    className="form-box border-2"
+                    className="form-box border-2 outline-none  focus:border-blue"
                     id="title"
                     name="title"
                     type="text"
@@ -75,7 +75,7 @@ export default function NewsForm(props) {
             </Conditional>
 
             <textarea
-              className="content-box border-2 h-32"
+              className="content-box border-2 outline-none  focus:border-blue h-32"
               id="content"
               name="content"
               placeholder="news content"
