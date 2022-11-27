@@ -22,6 +22,6 @@ describe(' -> GET /gallery/${gardenId} api call success', () => {
           ],
         },
       })
-    }
+    } 
 return  getGalleryImages(1, consume).then((photos))
   })
