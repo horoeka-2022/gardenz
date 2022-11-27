@@ -22,7 +22,7 @@ export default function Newsletter() {
         </form>
         <p className="text-xl">Thank you</p>
         <p className="text-right my-10"><span className="text-xl text-orange">*</span>Required Fields</p>
-        <button className="hover:bg-lightGreen ml-auto bg-orange py-4 px-10 rounded-md font-bold text-xl block" >Sign Up</button>
+        <button className="hover:bg-lightGreen ml-auto bg-orange py-4 px-10 rounded-md font-bold text-xl block">Sign Up</button>
       </div >
     </>
   )
