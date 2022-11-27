@@ -1,5 +1,5 @@
 exports.up = (knex) => {
-  return knex.schema.createTable('subscription', (table) => {
+  return knex.schema.createTable('subscriptions', (table) => {
     table.increments('id').primary()
     table.integer('garden_id').references('gardens.id')
     table.string('email')
@@ -9,5 +9,5 @@ exports.up = (knex) => {
 }
 
 exports.down = (knex) => {
-  return knex.schema.dropColumns('subscription')
+  return knex.schema.dropColumns('subscriptions')
 }
