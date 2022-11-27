@@ -13,6 +13,7 @@ const produceTypes = require('./routes/produceTypes')
 const news = require('./routes/news')
 const gallery = require('./routes/gallery')
 const shop = require('./routes/shop')
+const bugs = require('./routes/bugs')
 
 const server = express()
 
@@ -31,6 +32,7 @@ server.use('/api/v1/producetypes', produceTypes)
 server.use('/api/v1/news', news)
 server.use('/api/v1/gallery', gallery)
 server.use('/api/v1/shop', shop)
+server.use('/api/v1/bugs', bugs)
 
 server.get('*', (req, res) => {
   const appPath = path.join(__dirname, 'public', 'index.html')
