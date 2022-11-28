@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { getProduce } from './produceHelper'
+import { showError } from '../../../slices/error'
+import { useDispatch } from 'react-redux'
 
 export default function ProduceList({ gardenid }) {
+  const dispatch = useDispatch()
   const [produce, setProduce] = useState([])
 
   useEffect(() => {
@@ -10,7 +13,9 @@ export default function ProduceList({ gardenid }) {
       await setProduce(gardenProducts.produce)
     }
     retrieveProduce()
-      .catch(console.error)
+      .catch((error) => {
+        dispatch(showError(error.message))
+      })
   }, [gardenid])
 
 
