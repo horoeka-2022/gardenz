@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
+import BugForm from '../subcomponents/Bugs/BugForm'
 import IsUser from '../subcomponents/IsUser/IsUser'
 import UserNav from '../subcomponents/userNav/UserNav'
 import Home from '../views/Index/Index'
@@ -17,6 +18,7 @@ function UserRoutes() {
     <IsUser key="user">
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/bugs" element={<BugForm />} />
         <Route path="/gardens" element={<GardensList />} />
         <Route
           path="/gardens/:id/news"

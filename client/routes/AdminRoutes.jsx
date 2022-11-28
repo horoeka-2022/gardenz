@@ -17,12 +17,14 @@ import Menu from '../views/admin/Menu/Menu'
 import { Route, Routes } from 'react-router-dom'
 import Profile from '../views/user/Profile/Profile'
 import PageNotFound from '../views/PageNotFound/PageNotFound'
+import BugForm from '../subcomponents/Bugs/BugForm'
 
 function AdminRoutes() {
   return (
     <IsAdmin key="admin">
       <Routes>
         <Route path="/" element={<Menu />} />
+        <Route path="/bugs" element={<BugForm />} />
         <Route path="/admin/gardens" element={<AdminGardens />} />
         <Route path="/admin/gardens/add" element={<AddGarden />} />
         <Route path="/admin/gardens/:id/menu" element={<GardenMenu />} />
