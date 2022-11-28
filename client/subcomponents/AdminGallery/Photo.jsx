@@ -20,7 +20,6 @@ function Photo({
   }
 
   async function deletePhoto(photoId) {
-    console.log(photoId)
     await consume(`/gallery/${id}/delete`, '', 'post', {
       photosId: [photoId],
     })
