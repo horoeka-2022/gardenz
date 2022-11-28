@@ -1,3 +1,4 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer components { .submit-button { @apply inline-block px-10 py-2 bg-orange text-white font-sans font-bold text-xs leading-tight rounded shadow-md backdrop:focus:outline-none focus:ring-0 active:bg-orange active:shadow-lg transition duration-150 ease-in-out } }
