@@ -9,10 +9,10 @@ export function getGalleryImages(gardenId, consume = requestor) {
     .then((res) => {
       return res.body.images
     })
-    .finally(() => {
-      dispatch(clearWaiting())
-    })
     .catch((error) => {
       dispatch(showError(error.message))
+    })
+    .finally(() => {
+      dispatch(clearWaiting())
     })
 }

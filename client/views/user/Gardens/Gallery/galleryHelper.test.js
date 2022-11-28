@@ -9,7 +9,7 @@ afterEach(() => {
 })
 
 describe('-> GET /gallery/${gardenId} api call success', () => {
-  it('dispatches with the correct images by Id', () => {
+  it('dispatches with the correct images by Id', async () => {
     function consume(path) {
       expect(path).toMatch('1')
       return Promise.resolve({
@@ -27,13 +27,12 @@ describe('-> GET /gallery/${gardenId} api call success', () => {
         },
       })
     }
-    return getGalleryImages(1, consume).then((images) => {
-      expect(dispatch).toHaveBeenCalledWith(setWaiting())
-      expect(dispatch).toHaveBeenCalledWith(clearWaiting())
-      expect(images).toHaveLength(2)
-      expect(images[0].name).toBe('image2')
-      expect(images[1].name).toBe('image3')
-      expect(images[0].url).toContain('kelmarna')
-    })
+    const images = await getGalleryImages(1, consume)
+    expect(dispatch).toHaveBeenCalledWith(setWaiting())
+    expect(dispatch).toHaveBeenCalledWith(clearWaiting())
+    expect(images).toHaveLength(2)
+    expect(images[0].name).toBe('image2')
+    expect(images[1].name).toBe('image3')
+    expect(images[0].url).toContain('kelmarna')
   })
 })

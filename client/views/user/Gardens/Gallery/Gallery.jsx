@@ -5,7 +5,7 @@ import GardenHeader from '../../../../subcomponents/gardens/GardenHeader/GardenH
 import useGarden from '../../../../hooks/useGarden'
 import { getGalleryImages } from './galleryHelper'
 import { useDispatch } from 'react-redux'
-import { showError } from '../../../../slices/waiting'
+import { setWaiting, showError } from '../../../../slices/waiting'
 
 function Gallery() {
   const { id } = useParams()
@@ -14,6 +14,7 @@ function Gallery() {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    dispatch(setWaiting())
     getGalleryImages(id)
       .then((photos) => {
         setImages(photos)
