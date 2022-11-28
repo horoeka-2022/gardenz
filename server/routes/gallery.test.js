@@ -9,7 +9,7 @@ jest.mock('../logger')
 
 describe('GET /api/v1/gallery/:id', () => {
   it('responds with the correct gallery', () => {
-    db.getImages.mockImplementation(() => {
+    db.getPhotos.mockImplementation(() => {
       return Promise.resolve([
         {
           id: 1,
@@ -31,15 +31,15 @@ describe('GET /api/v1/gallery/:id', () => {
   })
 
   it('responds with the status 500', () => {
-    db.getImages.mockImplementation(() => {
-      return Promise.reject(new Error('mock getImages error'))
+    db.getPhotos.mockImplementation(() => {
+      return Promise.reject(new Error('mock getPhotos error'))
     })
 
     return request(server)
       .get('/api/v1/gallery/3')
       .expect(500)
       .then((res) => {
-        expect(log).toHaveBeenCalledWith('mock getImages error')
+        expect(log).toHaveBeenCalledWith('mock getPhotos error')
         expect(res.body.error.title).toBe('Unable to retrieve gallery images')
         return null
       })
