@@ -25,7 +25,7 @@ function Photo({
     })
   }
 
-  function checkMultiplePhotos(e) {
+  function checkMultiplePhotos() {
     const checked = photosToDelete.find((photoId) => photoId == photo.id)
     if (checked == null) {
       const photos = [...photosToDelete, photo.id]
