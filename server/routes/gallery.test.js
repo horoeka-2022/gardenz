@@ -22,10 +22,11 @@ describe('GET /api/v1/gallery/:id', () => {
     return request(server)
       .get('/api/v1/gallery/3')
       .then((res) => {
-        expect(res.body.images).toHaveLength(1)
-        expect(res.body.images[0].id).toBe(1)
-        expect(res.body.images[0].name).toBe('banana')
-        expect(res.body.images[0].url).toBe('url')
+        console.log(res.body)
+        expect(res.body).toHaveLength(1)
+        expect(res.body[0].id).toBe(1)
+        expect(res.body[0].name).toBe('banana')
+        expect(res.body[0].url).toBe('url')
         return null
       })
   })
