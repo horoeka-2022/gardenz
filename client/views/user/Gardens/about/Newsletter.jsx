@@ -7,6 +7,15 @@ import { addSubscription } from "./subscriptionsHelper";
 export default function Newsletter() {
   const { id } = useParams()
   const { name, imageHeaderUrl } = useGarden(id)
+  const [userInfo, setUserInfo] = useState({ gardenId: null, firstName: '', lastName: '', email: '' })
+
+  function handleNameChange(event) {
+    setInput({ ...input, name: event.target.value })
+  }
+
+  function handleCommentChange(event) {
+    setInput({ ...input, comment: event.target.value })
+  }
 
   return (
     <>
@@ -16,7 +25,7 @@ export default function Newsletter() {
         <form>
           <h2 className="mb-5 text-3xl font-bold ">Sign up Form</h2>
           <label className="block mb-3 text-xl" htmlFor="firstName">First Name <span className="text-orange">*</span></label>
-          <input className="mb-5 border-solid border-2 border-lightGreen w-full h-11 pl-2" type="text" required />
+          <input onChange={() => { setUserInfo({}) }} className="mb-5 border-solid border-2 border-lightGreen w-full h-11 pl-2" type="text" required />
           <label className="block mb-3 text-xl" htmlFor="lastName">Last Name <span className="text-orange">*</span></label>
           <input className="mb-5 border-solid border-2 border-lightGreen w-full h-11 pl-2" type="text" required />
           <label className="block mb-3 text-xl" htmlFor="email">Email <span className="text-orange">*</span></label>
