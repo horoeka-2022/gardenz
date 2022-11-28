@@ -11,7 +11,7 @@ function Gallery() {
           <AiOutlinePlusCircle />
         </i>
       </section>
-      <section className="lg:flex flex-wrap justify-center">
+      <section className="lg:flex flex-wrap flex-col justify-center">
         <Photos />
       </section>
     </main>
