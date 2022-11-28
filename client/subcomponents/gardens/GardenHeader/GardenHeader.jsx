@@ -7,7 +7,9 @@ export default function GardenHeader({ name, url }) {
       style={{ backgroundImage: `url('${url}')` }}
     >
       <article className="container flex">
-        <h2 className="font-sans text-white text-4xl font-bold py-6">{name}</h2>
+        <h2 className="font-sans text-white text-4xl font-bold py-6 sm:bg-red">
+          {name}
+        </h2>
       </article>
     </section>
   )
