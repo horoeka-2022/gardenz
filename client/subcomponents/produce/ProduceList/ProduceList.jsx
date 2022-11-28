@@ -8,14 +8,15 @@ export default function ProduceList({ gardenid }) {
   const [produce, setProduce] = useState([])
 
   useEffect(() => {
-    const retrieveProduce = async () => {
-      const gardenProducts = await getProduce(gardenid)
-      await setProduce(gardenProducts.produce)
+    try {
+      const retrieveProduce = async () => {
+        const gardenProducts = await getProduce(gardenid)
+        setProduce(gardenProducts.produce)
+      }
+      retrieveProduce()
+    } catch (error) {
+      dispatch(showError(error.message))
     }
-    retrieveProduce()
-      .catch((error) => {
-        dispatch(showError(error.message))
-      })
   }, [gardenid])
 
 

@@ -11,7 +11,7 @@ export async function registerUser(
   navigateTo,
   consume = requestor
 ) {
-
+  dispatch(setWaiting())
   try {
     const newUser = {
       firstName: user.firstName,
@@ -22,7 +22,6 @@ export async function registerUser(
     }
     const storeState = await getState()
     const { token } = storeState.user
-    await dispatch(setWaiting())
 
     const user = await consume('/users', token, 'post', newUser)
     const newUserInfo = user.body

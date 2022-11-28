@@ -10,12 +10,12 @@ export async function addVolunteer(
 ) {
   try {
     const { token } = await getState().user
-    await dispatch(setWaiting())
+    dispatch(setWaiting())
     const response = await consume('/volunteers/extras', token, 'post', volunteer)
-    await dispatch(clearWaiting())
+    dispatch(clearWaiting())
     const newVolunteer = { ...volunteer, ...response.body }
     await addExtraVolunteer(newVolunteer)
-    return response
+    return null
   } catch (error) {
     dispatch(showError(error.message))
   }
