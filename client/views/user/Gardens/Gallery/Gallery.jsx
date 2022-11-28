@@ -29,8 +29,9 @@ function Gallery() {
       <GardenHeader name={name} url={imageHeaderUrl} />
       <section>
         <p> hi, this is the gallery</p>
-        <img src="/images/comGardenPlant.png" alt="garden image1" />
-        <img src="/images/comGardenRows.png" alt="garden image2" />
+        {images.map((image) => (
+          <img key={image.url} src={image.url} alt={image.name} />
+        ))}
       </section>
     </>
   )
