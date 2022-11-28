@@ -11,7 +11,10 @@ describe('Gallery', () => {
     renderWithRedux(<Gallery />, { store, initialState: { garden: {} } })
 
     const firstImage = screen.getAllByRole('img')[0]
-    expect(firstImage).toHaveAttribute('src', '/images/comGardenPlant.png')
+    expect(firstImage).toHaveAttribute(
+      'src',
+      '/images/galleryPlaceHolder01.jpg'
+    )
     expect(firstImage).toHaveAttribute('alt', 'garden image1')
   })
 })

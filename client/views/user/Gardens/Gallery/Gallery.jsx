@@ -22,51 +22,51 @@ function Gallery() {
   const { name, imageHeaderUrl } = useGarden(id)
   const images = [
     {
+      id: id,
       name: 'garden image1',
       url: '/images/galleryPlaceHolder01.jpg',
-      garden_id: id,
     },
     {
+      id: id,
       name: 'garden image2',
       url: '/images/galleryPlaceHolder02.jpg',
-      garden_id: id,
     },
     {
+      id: id,
       name: 'garden image3',
       url: '/images/galleryPlaceHolder03.jpg',
-      garden_id: id,
     },
     {
+      id: id,
       name: 'garden image4',
       url: '/images/galleryPlaceHolder04.jpg',
-      garden_id: id,
     },
     {
+      id: id,
       name: 'garden image5',
       url: '/images/galleryPlaceHolder01.jpg',
-      garden_id: id,
     },
     {
+      id: id,
       name: 'garden image6',
       url: '/images/galleryPlaceHolder02.jpg',
-      garden_id: id,
     },
     {
+      id: id,
       name: 'garden image7',
       url: '/images/galleryPlaceHolder03.jpg',
-      garden_id: id,
     },
     {
       name: 'garden image8',
       url: '/images/galleryPlaceHolder04.jpg',
-      garden_id: id,
+      id: id,
     },
   ]
 
   function GalleryItem(props) {
     const { name, url } = props.image
     return (
-      <figure className="w-64 p-1.5 flex flex-col justify-around">
+      <figure className="w-64 p-1.5 flex flex-row justify-around">
         <a href={url}>
           <img src={url} alt={name} />
         </a>
