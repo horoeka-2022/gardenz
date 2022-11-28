@@ -12,7 +12,7 @@ export default function NewsList({ news }) {
           Keeping you updated on your community garden!
         </p>
       </div>
-      <ul className="container mx-auto grid sm:grid-cols-1 lg:grid-cols-3 gap-3 mt-20 ml-7 pl-20">
+      <ul className="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 sm:ml-0 md:ml-3 lg:ml-5 gap-3 mt-20 px-16">
         {news.map((news) => (
           <li className="grid" key={news.id}>
             <News news={news} />
