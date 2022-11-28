@@ -13,12 +13,14 @@ export default function ProduceForm({
   gardens,
   produceTypes,
   initialFormData,
-  action,
+  // action,
 }) {
   return (
     <>
-      <section>
-        <h2 className="form-title">{action}</h2>
+      <section className="px-20 py-24 ">
+        <h1 className="form-title text-2xl font-semibold font-sans ">
+          Add Produce
+        </h1>
         <Formik
           initialValues={initialFormData}
           validationSchema={eventSchema}
@@ -28,20 +30,20 @@ export default function ProduceForm({
         >
           {({ errors, touched }) => (
             <Form className="form-content">
-              <div className="field">
-                <label htmlFor="name" className="label">
+              <div className="field flex flex-col box-border w-80 ">
+                <label htmlFor="name" className="label border-style: solid;">
                   Produce Name
                 </label>
                 <Field
-                  className="form-box"
-                  id="name"
+                  className="form-box border-2 border-darkGreen rounded-md "
+                  id="name "
                   name="name"
                   type="text"
-                  placeholder="produce name"
+                  placeholder=" Produce Name"
                 />
                 {errors.name && touched.name ? <p>{errors.name}</p> : null}
-                <label htmlFor="garden" className="label">
-                  Produce Family
+                <label htmlFor="garden" className="label leading-10">
+                  Produce Type
                 </label>
                 {errors.produceType && touched.produceType ? (
                   <p>{errors.produceType}</p>
@@ -52,7 +54,10 @@ export default function ProduceForm({
                   placeholder="produce name"
                 >
                   {({ field }) => (
-                    <select {...field}>
+                    <select
+                      className="border-2 border-darkGreen rounded-md"
+                      {...field}
+                    >
                       <option value=""></option>
                       {produceTypes.map(({ id, name }) => (
                         <option key={id} value={id}>
@@ -64,30 +69,44 @@ export default function ProduceForm({
                 </Field>
               </div>
 
-              <ul>
-                {gardens?.length ? (
-                  gardens.map((garden) => {
-                    return (
-                      <li key={garden.id} value="hello">
-                        <Field
-                          value={garden.id.toString()}
-                          type="checkbox"
-                          name="gardenIds"
-                        />
-                        {errors.gardenIds && touched.gardenIds ? (
-                          <p>{errors.gardenIds}</p>
-                        ) : null}
-                        {garden.name}
-                      </li>
-                    )
-                  })
-                ) : (
-                  <p>No produce yet</p>
-                )}
-              </ul>
+              <div className="pt-0 flex flex-col space-y-4 tracking-wide">
+                <h1 className="font-semibold font-sans text-xl mt-10 ">
+                  Gardens
+                </h1>
+                <ul>
+                  {gardens?.length ? (
+                    gardens.map((garden) => {
+                      return (
+                        <li
+                          key={garden.id}
+                          value="hello"
+                          className="leading-10"
+                        >
+                          <Field
+                            value={garden.id.toString()}
+                            input
+                            type="checkbox"
+                            class="checked:accent-orange text-white mr-5"
+                            name="gardenIds"
+                          />
+                          {errors.gardenIds && touched.gardenIds ? (
+                            <p>{errors.gardenIds}</p>
+                          ) : null}
+                          {garden.name}
+                        </li>
+                      )
+                    })
+                  ) : (
+                    <p>No produce yet</p>
+                  )}
+                </ul>
+              </div>
 
-              <div className="button-group">
-                <button className="submit form-box" type="submit">
+              <div className="rounded-md pt-14 pl-40">
+                <button
+                  type="button"
+                  className="inline-block px-10 py-2 bg-orange text-white font-sans font-bold text-xs leading-tight  rounded shadow-md backdrop:focus:outline-none focus:ring-0 active:bg-orange active:shadow-lg transition duration-150 ease-in-out"
+                >
                   Submit
                 </button>
               </div>

@@ -26,53 +26,71 @@ export default function NewsForm(props) {
 
   return (
     <>
-      <section>
-        <h2 className="form-title">{props.action}</h2>
-        <form className="form-content" onSubmit={formik.handleSubmit}>
-          <div className="field">
-            <label htmlFor="title" className="label">
-              News Title
-            </label>
-            <Conditional
-              condition={formik.errors.title && formik.touched.title}
-            >
-              <p className="inputError">{formik.errors.title}</p>
-            </Conditional>
-            <input
-              className="form-box"
-              id="title"
-              name="title"
-              type="text"
-              placeholder="news title"
-              onChange={formik.handleChange}
-              value={formik.values.title}
-            />
+      <section className="py-12 ">
+        <h2 className="font-serif	text-xl form-title text-center">
+          {props.action}
+        </h2>
+        <div className="flex justify-center">
+          <form className="form-content" onSubmit={formik.handleSubmit}>
+            <div className="py-1 field">
+              <div className="py-8">
+                <label htmlFor="title" className="label border-3">
+                  News Title
+                </label>
+                <div className="field">
+                  <Conditional
+                    condition={formik.errors.title && formik.touched.title}
+                  >
+                    <p className="inputError text-red text-xs">
+                      {formik.errors.title}
+                    </p>
+                  </Conditional>
+                </div>
+                <div className="py-1 field">
+                  <input
+                    className="form-box border-2 outline-none  focus:border-blue"
+                    id="title"
+                    name="title"
+                    type="text"
+                    placeholder="news title"
+                    utton-group
+                    items-center
+                    block
+                    onChange={formik.handleChange}
+                    value={formik.values.title}
+                  />
+                </div>
+              </div>
 
-            <label htmlFor="content" className="label">
-              Content
-            </label>
+              <label htmlFor="content" className="label">
+                Content
+              </label>
+            </div>
             <Conditional
               condition={formik.errors.content && formik.touched.content}
             >
-              <p className="inputError">{formik.errors.content}</p>
+              <p className="inputError text-red text-xs">
+                {formik.errors.content}
+              </p>
             </Conditional>
 
             <textarea
-              className="content-box"
+              className="content-box border-2 outline-none  focus:border-blue h-32"
               id="content"
               name="content"
               placeholder="news content"
               onChange={formik.handleChange}
               value={formik.values.content}
             />
-          </div>
 
-          <div className="button-group">
-            <button className="submit form-box" type="submit">
+            <button
+              className="block ml-auto mr-auto submit form-box w-32 mt-5 p-3 text-center rounded-md text-white bg-orange transition ease-in-out hover:bg-orange hover:-translate-y-1 hover:scale-110 duration-300"
+              type="submit"
+            >
               Submit
             </button>
-          </div>
-        </form>
+          </form>
+        </div>
       </section>
     </>
   )
