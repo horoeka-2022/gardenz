@@ -61,7 +61,7 @@ test('Shop component should display 2 items', async () => {
   //ACT
   const produceBoxName = await screen.getByText('Large veggie box')
   const addToBasketButton = screen.getByRole('button', {
-    name: 'add to basket',
+    name: /add to basket/,
   })
   userEvent.click(addToBasketButton)
   const addToBasket = screen.getByText()
