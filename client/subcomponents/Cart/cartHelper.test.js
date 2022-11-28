@@ -1,9 +1,8 @@
-import './cartHelper'
+import { calculateGst } from './cartHelper'
 
-const x = 10
-
-describe('gst calculated', () => {
-  it('calculates the gst', () => {
-    expect(x).toBe(x)
+describe('calculate gst', () => {
+  it('adding gst', () => {
+    const result = calculateGst(100)
+    expect(result).toBe(114.99999999999999)
   })
 })
