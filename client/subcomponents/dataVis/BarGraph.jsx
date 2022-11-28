@@ -6,6 +6,7 @@ import { Group } from '@visx/group'
 // import { ScaleSVG } from '@visx/responsive';
 import { scaleBand, scaleLinear } from '@visx/scale'
 import { AxisBottom, AxisLeft } from '@visx/axis'
+// import { Grid, LineSeries, XYChart, Axis, Tooltip } from '@visx/xychart'
 const verticalMargin = 120
 // accessors
 
@@ -40,7 +41,7 @@ export default function BarGraph({ events }) {
         range: [0, xMax],
         round: true,
         domain: getSortedDates(data.map(getDates)), // range on x-axis (domain is an array where each element is a bar)
-        padding: 0.4,
+        padding: 0.42, //made changes here - was 0.4
       }),
     [xMax, data]
   )
@@ -108,18 +109,20 @@ export default function BarGraph({ events }) {
 
           <AxisBottom
             top={yMax}
-            left={margin.left}
+            left={margin.left + 5}
             scale={dateScale}
             tickFormat={formatDate}
             tickLabelProps={() => ({
               fontSize: 6,
               textAnchor: 'middle',
             })}
+            label="Date"
           />
           <AxisLeft
             scale={volunteerScale}
             // top={margin.top}
-            left={margin.left + 20} // its crammed if less than 20 (disappears into the left side) probably can fix it if outside of group
+            left={margin.left + 50} // its crammed if less than 20 (disappears into the left side) probably can fix it if outside of group
+            label="Number of volunteers"
           />
         </Group>
       </svg>
