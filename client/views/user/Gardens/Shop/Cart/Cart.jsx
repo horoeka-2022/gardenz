@@ -1,28 +1,43 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import CartItem from '../../../../../subcomponents/Cart/CartItem'
+import Shipping from '../../../../../subcomponents/Cart/Shipping'
 
 function Cart() {
   const navigate = useNavigate()
   const cart = JSON.parse(localStorage.getItem('order'))
-  const [items, setItems] = useState(cart)
-  // useEffect(() => {
-  //   localStorage.setItem('order', JSON.stringify(items))
-  //   const order = JSON.parse(localStorage.getItem('order'))
-  //   if (order) {
-  //     setItems(order)
-  //   }
-  // }, [])
 
-  //define the useState() later
-  const [calculateTotal, setCalculateTotal] = useState()
+  const [items, setItems] = useState(cart)
+
+  const originalTotal = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  )
+  console.log(originalTotal)
+  const [total, setTotal] = useState(originalTotal)
+
+  function updateQuantity(id, newQuantity) {
+    const newItems = items.map((item) =>
+      item.id === id ? { ...item, quantity: newQuantity } : item
+    )
+    setItems(() => newItems)
+    console.table(newItems)
+    const newTotal = newItems.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0
+    )
+    console.log('newTotal', newTotal)
+    setTotal(() => newTotal)
+    console.log(total)
+  }
 
   function submitCart() {
-    //pass the chosed orders into the deliever page
-    const { name, id, quantity, price } = items
+    //when checkout button clicked, update the localstorage
+
     localStorage.setItem('order', JSON.stringify(items))
     const order = JSON.parse(localStorage.getItem('order'))
+    console.log(order)
     if (order) {
       setItems(order)
     }
@@ -33,27 +48,38 @@ function Cart() {
   }
 
   return cart ? (
-    <div className="cart">
-      <table>
-        <thead>
-          <tr>
-            <td role="columnheader">Name</td>
-            <td role="columnheader">Price</td>
-            <td role="columnheader">Quantity</td>
-          </tr>
-        </thead>
+    <section className="py-4 container">
+      <div className="row justify-content-center">
+        <table className="table table-light table-hover m-0">
+          <thead>
+            <tr>
+              <td role="columnheader">Name</td>
+              <td role="columnheader">Price</td>
+              <td role="columnheader">Quantity</td>
+            </tr>
+          </thead>
+          <tbody>
+            {cart.map((item, id) => {
+              return (
+                <CartItem
+                  key={id}
+                  item={item}
+                  updateQuantity={updateQuantity}
+                />
+              )
+            })}
+          </tbody>
+        </table>
         <tbody>
-          {cart.map((item, id) => {
-            return <CartItem key={id} items={item} />
-          })}
+          <Shipping total={total} />
         </tbody>
-      </table>
-      <p className="actions">
-        <button className="button-primary" onClick={submitCart}>
-          Checkout
-        </button>
-      </p>
-    </div>
+        <p className="actions">
+          <button className="button-primary" onClick={submitCart}>
+            Checkout
+          </button>
+        </p>
+      </div>{' '}
+    </section>
   ) : (
     <p>
       Your cart is empty! Start shopping{' '}

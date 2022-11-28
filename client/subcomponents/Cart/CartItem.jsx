@@ -1,14 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 function CartItem(props) {
-  const [num, setNum] = useState(props.items.quantity)
+  const [num, setNum] = useState(props.item.quantity)
 
-  useEffect(() => {}, [])
+  const { id, name, price } = props.item
 
-  const { name, id, quantity, price } = props.items
+  function incNum() {
+    let newQuantity = Number(num) + 1
+    setNum(() => newQuantity)
+    props.updateQuantity(id, newQuantity)
+  }
+  function decNum() {
+    let newQuantity = Number(num) - 1
+    setNum(() => newQuantity)
+    props.updateQuantity(id, newQuantity)
+  }
 
   function handleChange(e) {
-    setNum(e.target.value)
+    setNum(() => e.target.value)
   }
 
   return (
@@ -17,19 +26,32 @@ function CartItem(props) {
         <td>{name}</td>
         <td>{price}</td>
         <td>
-          {/* <button type="button" onClick={decNum}>
-            -
-          </button> */}
-          <input
-            aria-label="quantity"
-            className="update-input"
-            value={num}
-            type="number"
-            onChange={handleChange}
-          />
-          {/* <button type="button" onClick={incNum}>
-            +
-          </button> */}
+          <div className="col-xl-1">
+            <div className="input-group">
+              <button
+                className="btn btn-info ms-1 mr-40 bg-orange p-5"
+                type="button"
+                onClick={decNum}
+              >
+                -
+              </button>
+
+              <input
+                type="text"
+                className="form-control"
+                value={num}
+                onChange={handleChange}
+              />
+
+              <button
+                className="btn btn-info ms-1 bg-orange p-5"
+                type="button"
+                onClick={incNum}
+              >
+                +
+              </button>
+            </div>
+          </div>
         </td>
       </tr>
     </>

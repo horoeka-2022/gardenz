@@ -1,7 +1,15 @@
 import React from 'react'
 
 function Shipping(props) {
-  const { quantity, price } = props.items
+  // console.log(props.items)
+
+  // useEffect(() => {
+  // const newTotal = props.items.reduce(
+  //   (total, item) => total + item.price * item.quantity,
+  //   0
+  // )
+  // setTotal(newTotal)
+  // }, [props.items.length])
 
   return (
     <table>
@@ -13,9 +21,7 @@ function Shipping(props) {
       </thead>
       <tbody>
         <td>Total(inc. GST)</td>
-        <td>
-          {quantity}*{price}
-        </td>
+        <td>{props.total}</td>
       </tbody>
     </table>
   )
