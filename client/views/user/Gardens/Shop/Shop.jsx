@@ -37,7 +37,7 @@ function Shop() {
           {shop.map((item) => {
             return (
               <>
-                <div className="w-100 m-12 p-8 rounded-xl  shadow-xl flex flex-row ">
+                <div className="w-100 m-12 p-8 rounded-xl shadow-xl flex flex-row ">
                   <ShopListItem
                     key={item.id}
                     product={item}
@@ -53,7 +53,4 @@ function Shop() {
   )
 }
 
-// <div className="flex-none object-contain h-40 w-30 grid grid-cols-2 gap-1 content-center ... ">
 export default Shop
-
-// className="border-spacing-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 mb-8 gap-2 rounded-xl"

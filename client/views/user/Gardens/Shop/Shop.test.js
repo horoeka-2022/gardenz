@@ -53,7 +53,8 @@ test('Shop component should display 2 items', async () => {
   //ARRANGE
 
   function addProductToCart(product, quantity) {
-    console.log('to be implemented later')
+    expect(quantity).toBe(1)
+    expect(product.name).toBe('Large veggie box')
   }
 
   render(<ShopListItem product={item} addToCart={addProductToCart} />)
@@ -68,7 +69,7 @@ test('Shop component should display 2 items', async () => {
 
   //ASSERT
   expect(produceBoxName).toBeInTheDocument()
-  expect(addToBasket).toBeVisible()
+  expect(addToBasket).toBeInTheDocument()
 })
 
 //--Our test
