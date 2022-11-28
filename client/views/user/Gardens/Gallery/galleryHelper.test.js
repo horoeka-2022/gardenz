@@ -14,7 +14,7 @@ describe('-> GET /gallery/${gardenId} api call success', () => {
       expect(path).toMatch('1')
       return Promise.resolve({
         body: {
-          photos: [
+          images: [
             {
               name: 'image2',
               url: 'https://www.kelmarnagardens.nz/uploads/6/0/1/1/60114025/kelmarna-autumn-festival-2019-2-1_orig.jpg',
@@ -27,13 +27,13 @@ describe('-> GET /gallery/${gardenId} api call success', () => {
         },
       })
     }
-    return getGalleryImages(1, consume).then((photos) => {
+    return getGalleryImages(1, consume).then((images) => {
       expect(dispatch).toHaveBeenCalledWith(setWaiting())
       expect(dispatch).toHaveBeenCalledWith(clearWaiting())
-      expect(photos).toHaveLength(2)
-      expect(photos[0].name).toBe('image2')
-      expect(photos[1].name).toBe('image3')
-      expect(photos[0].url).toContain('kelmarna')
+      expect(images).toHaveLength(2)
+      expect(images[0].name).toBe('image2')
+      expect(images[1].name).toBe('image3')
+      expect(images[0].url).toContain('kelmarna')
     })
   })
 })
