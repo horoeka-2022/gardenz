@@ -11,7 +11,6 @@ function Photo({
   setPhotosToDelete,
 }) {
   const { id } = useParams()
-  const [checked, setChecked] = useState(false)
 
   async function handleTrash() {
     const confirmAction = confirm('Please confirm deletion of the photo')
@@ -28,7 +27,6 @@ function Photo({
   }
 
   function checkMultiplePhotos(e) {
-    e.target.checked ? setChecked(() => true) : setChecked(() => false)
     const id = Number(e.target.parentElement.id)
     const checked = photosToDelete.find((photoId) => photoId == id)
     if (checked == null) {
@@ -48,13 +46,13 @@ function Photo({
         alt={photo.name}
       ></img>
       <FiTrash2
+        data-testid="trash"
         className="absolute top-0 left-0 text-white text-2xl m-2"
         onClick={handleTrash}
       />
-      <FiSettings className="absolute top-0 right-0  text-white text-2xl m-2" />
+      <FiSettings  data-testid="settings" className="absolute top-0 right-0  text-white text-2xl m-2" />
       <input
         type="checkbox"
-        checked={checked}
         className="absolute bottom-0 right-0 m-2 h-6 w-6 accent-slate-100 rounded"
         onClick={checkMultiplePhotos}
       />
