@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 
 import CartItem from '../../../../../subcomponents/Cart/CartItem'
-import Shipping from '../../../../../subcomponents/Cart/Shipping'
-
+import useGarden from '../../../../../hooks/useGarden'
+import Total from '../../../../../subcomponents/Cart/Total'
 function Cart() {
   const navigate = useNavigate()
   const cart = JSON.parse(localStorage.getItem('order'))
+
+  const { id } = useParams()
+  useGarden(id)
 
   const [items, setItems] = useState(cart)
 
@@ -41,10 +44,8 @@ function Cart() {
     if (order) {
       setItems(order)
     }
-    {
-      /*change the url link with dynamic id later */
-    }
-    navigate('/gardens/:id/shop/delievery/:id')
+
+    navigate(`/gardens/${id}/shop/delievery/1`)
   }
 
   return cart ? (
@@ -71,7 +72,7 @@ function Cart() {
           </tbody>
         </table>
         <tbody>
-          <Shipping total={total} />
+          <Total total={total} />
         </tbody>
         <p className="actions">
           <button className="button-primary" onClick={submitCart}>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Shipping(props) {
+function Total(props) {
   // console.log(props.items)
 
   // useEffect(() => {
@@ -27,4 +27,4 @@ function Shipping(props) {
   )
 }
 
-export default Shipping
+export default Total
