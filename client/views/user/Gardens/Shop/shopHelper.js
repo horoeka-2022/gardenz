@@ -5,7 +5,7 @@ export function fetchShopList() {
     {
       id: 1,
       productId: 2,
-      name: 'large veggie box',
+      name: 'Large veggie box',
       description:
         'a large box filled with fresh seasonal produce grown at your local garden',
       price: 29,
@@ -16,7 +16,7 @@ export function fetchShopList() {
     {
       id: 2,
       productId: 3,
-      name: 'small veggie box',
+      name: 'Small veggie box',
       description:
         'a small box filled with fresh seasonal produce grown at your local garden',
       price: 15,

@@ -30,24 +30,30 @@ function Shop() {
 
   return (
     <>
-      <GardenHeader name={name} url={imageHeaderUrl} />
-      <p>A shop will be here.</p>
-      <div className="border-inherit rounded grid justify-items-center grid-cols-2 sm:grid-cols-2 md:grid-cols-2 mb-8 gap-2 border-2">
-        {shop.map((item) => {
-          return (
-            <>
-              <ShopListItem
-                key={item.id}
-                product={item}
-                addToCart={addProductToCart}
-              />
-            </>
-          )
-        })}
-      </div>
+      <main>
+        <GardenHeader name={name} url={imageHeaderUrl} />
+        <p>A shop will be here.</p>
+        <div className="flex flex-wrap">
+          {shop.map((item) => {
+            return (
+              <>
+                <div className="w-100 m-12 p-8 rounded-xl  shadow-xl flex flex-row ">
+                  <ShopListItem
+                    key={item.id}
+                    product={item}
+                    addToCart={addProductToCart}
+                  />
+                </div>
+              </>
+            )
+          })}
+        </div>
+      </main>
     </>
   )
 }
 
 // <div className="flex-none object-contain h-40 w-30 grid grid-cols-2 gap-1 content-center ... ">
 export default Shop
+
+// className="border-spacing-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 mb-8 gap-2 rounded-xl"
