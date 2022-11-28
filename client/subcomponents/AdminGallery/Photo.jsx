@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useParams } from 'react-router-dom'
 import { FiTrash2, FiSettings } from 'react-icons/fi'
 import consume from '../../consume'
@@ -50,7 +50,10 @@ function Photo({
         className="absolute top-0 left-0 text-white text-2xl m-2"
         onClick={handleTrash}
       />
-      <FiSettings  data-testid="settings" className="absolute top-0 right-0  text-white text-2xl m-2" />
+      <FiSettings
+        data-testid="settings"
+        className="absolute top-0 right-0  text-white text-2xl m-2"
+      />
       <input
         type="checkbox"
         className="absolute bottom-0 right-0 m-2 h-6 w-6 accent-slate-100 rounded"
