@@ -44,7 +44,6 @@ router.post('/:gardenId', async (req, res) => {
 // POST /api/v1/gallery/1/delete
 router.post('/:gardenId/delete', async (req, res) => {
   const { photosId } = req.body
-  console.log(photosId)
   try {
     await Promise.all(photosId.map(async (id) => await db.deletePhotos(id)))
     res.sendStatus(200)

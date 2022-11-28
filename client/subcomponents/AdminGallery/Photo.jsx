@@ -26,13 +26,12 @@ function Photo({
   }
 
   function checkMultiplePhotos(e) {
-    const id = Number(e.target.parentElement.id)
-    const checked = photosToDelete.find((photoId) => photoId == id)
+    const checked = photosToDelete.find((photoId) => photoId == photo.id)
     if (checked == null) {
-      const photos = [...photosToDelete, id]
+      const photos = [...photosToDelete, photo.id]
       setPhotosToDelete(() => photos)
     } else {
-      const photos = photosToDelete.filter((photoId) => photoId != id)
+      const photos = photosToDelete.filter((photoId) => photoId != photo.id)
       setPhotosToDelete(() => photos)
     }
   }
