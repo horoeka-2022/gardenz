@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import GardenHeader from '../../../../subcomponents/gardens/GardenHeader/GardenHeader'
 import useGarden from "../../../../hooks/useGarden";
-// import { addSubscription } from "./subscriptionsHelper";
+import { addSubscription } from "./subscriptionsHelper";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
@@ -21,7 +21,8 @@ export default function Newsletter() {
       email: Yup.string().email("Invalid email address").required("Required")
     }),
     onSubmit: (values) => {
-      console.log(values)
+      addSubscription(id, values)
+      formik.resetForm()
     },
   })
   return (
@@ -42,7 +43,7 @@ export default function Newsletter() {
           <input id="email" name="email" className="mb-5 border-solid border-2 border-lightGreen w-full h-11 pl-2" type="email" onChange={formik.handleChange} value={formik.values.email} required />
           {formik.errors.email ? <p>{formik.errors.email}</p> : null}
 
-          <button type="submit" className="hover:bg-lightGreen ml-auto bg-orange py-4 px-10 rounded-md font-bold text-xl block">Sign Up</button>
+          <button type="submit" value="send" className="hover:bg-lightGreen ml-auto bg-orange py-4 px-10 rounded-md font-bold text-xl block">Sign Up</button>
         </form>
         <p className="text-xl">Thank you</p>
         <p className="text-right my-10"><span className="text-xl text-orange">*</span>Required Fields</p>

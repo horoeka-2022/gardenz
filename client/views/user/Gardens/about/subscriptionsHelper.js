@@ -4,8 +4,9 @@ import { clearWaiting, setWaiting } from '../../../../slices/waiting'
 import { showError } from '../../../../slices/error'
 
 export function addSubscription(gardenId, userInfo, consume = requestor) {
+
   dispatch(setWaiting())
-  return consume(`/garden/${gardenId}/signup`, null, 'post', { gardenId, ...userInfo },)
+  return consume('/subscriptions', null, 'post', { gardenId, ...userInfo },)
     .then(() => {
       dispatch(clearWaiting())
     })

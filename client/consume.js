@@ -1,5 +1,4 @@
 import request from 'superagent'
-
 const baseUrl = '/api/v1'
 
 export default function consume(
@@ -15,7 +14,7 @@ export default function consume(
   if (!token) {
     return request[method](baseUrl + endpoint)
       .set(headers)
-      [payLoadMethod](data)
+    [payLoadMethod](data)
       .then((res) => res)
       .catch((err) => {
         const errMessage = err.response?.body?.error?.title
@@ -25,7 +24,7 @@ export default function consume(
     return request[method](baseUrl + endpoint)
       .set('authorization', `Bearer ${token}`)
       .set(headers)
-      [payLoadMethod](data)
+    [payLoadMethod](data)
       .then((res) => res)
       .catch((err) => {
         const errMessage = err.response?.body?.error?.title

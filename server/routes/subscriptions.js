@@ -4,9 +4,7 @@ const router = express.Router()
 module.exports = router
 
 router.post('/', (req, res) => {
-  const { gardenId, firstName, lastName, email } = req.body
-  // validation check!
-  db.addSubscription({ gardenId, firstName, lastName, email })
+  db.addSubscription(req.body)
     .then(() => {
       res.sendStatus(201)
       return null
