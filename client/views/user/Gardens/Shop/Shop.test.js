@@ -61,14 +61,14 @@ test('Shop component should display 2 items', async () => {
   //ACT
   const produceBoxName = await screen.getByText('Large veggie box')
   const addToBasketButton = screen.getByRole('button', {
-    name: /add to basket/,
+    name: 'add to basket',
   })
   userEvent.click(addToBasketButton)
-  const addToBasket = screen.getByText()
+  const addToBasket = screen.getByText('add to basket')
 
   //ASSERT
   expect(produceBoxName).toBeInTheDocument()
-  expect(addToBasket).toBeInTheDocument()
+  expect(addToBasket).toBeVisible()
 })
 
 //--Our test
