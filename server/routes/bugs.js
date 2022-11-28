@@ -19,9 +19,8 @@ router.post('/', async (req, res) => {
     await request
       .post(destinationAPI)
       .set('User-Agent', userAgent)
-      .set('Authorization', `token ${accessToken}`)
+      .set('Authorization', `Bearer ${accessToken}`)
       .send(issue)
-
     res.sendStatus(201)
   } catch (err) {
     console.log(err.message)

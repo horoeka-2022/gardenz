@@ -8,7 +8,7 @@ export default function Bug() {
         <img
           src="/images/bugIcon.png"
           alt="bug icon"
-          className="w-10 h-10 md:float-right mr-8"
+          className="w-10 h-10 md:float-right mr-8 mb-5"
         />
       </Link>
     </div>

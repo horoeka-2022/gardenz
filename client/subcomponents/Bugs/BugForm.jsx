@@ -19,7 +19,6 @@ export default function BugForm() {
       body: '',
     },
     onSubmit: async (values) => {
-      // console.log(values)
       await addBug(values)
       navigate(-1)
     },
@@ -33,18 +32,23 @@ export default function BugForm() {
 
   return (
     <>
-      <section>
-        <h2 className="form-title">Report Bug</h2>
-        <form className="form-content" onSubmit={formik.handleSubmit}>
+      <section className="mx-auto max-w-md mt-9 px-8">
+        <h2 className="form-title text-darkBlue text-[24px] font-serif py-3">
+          Report Bug
+        </h2>
+        <form
+          className="form-content text-[16px] text-black"
+          onSubmit={formik.handleSubmit}
+        >
           <div className="field">
             <label htmlFor="title" className="label">
-              Name your Bug
+              Summary of the issue
             </label>
             {formik.errors.title && formik.touched.title ? (
               <p className="inputError">{formik.errors.title}</p>
             ) : null}
             <input
-              className="form-box"
+              className="form-box border border-[1.5px] border-blue rounded-[4px] p-2 w-full mb-5"
               id="title"
               name="title"
               type="text"
@@ -53,12 +57,13 @@ export default function BugForm() {
             />
 
             <label htmlFor="body" className="label">
-              Describe your bug
+              Detailed steps to reproduce the issue
             </label>
             {formik.errors.body && formik.touched.body ? (
               <p className="inputError">{formik.errors.body}</p>
             ) : null}
             <textarea
+              className="description-box border border-[1.5px] border-blue rounded-[4px] p-2 pb-[7em] w-full mb-3"
               id="body"
               name="body"
               onChange={formik.handleChange}
@@ -66,11 +71,17 @@ export default function BugForm() {
             />
           </div>
 
-          <button className="submit form-box" type="submit">
+          <button
+            className="submit form-box h-7 w-48 bg-orange text-white font-bold rounded-[4px]"
+            type="submit"
+          >
             Submit
           </button>
 
-          <button className="submit form-box" onClick={handleCancel}>
+          <button
+            className="submit form-box h-7 w-48 font-bold rounded-[4px]"
+            onClick={handleCancel}
+          >
             Cancel
           </button>
         </form>
