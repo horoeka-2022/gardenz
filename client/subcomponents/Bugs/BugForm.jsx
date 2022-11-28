@@ -2,6 +2,7 @@ import React from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { addBug } from './bugsHelper'
+import { useNavigate } from 'react-router-dom'
 
 const bugSchema = Yup.object({
   title: Yup.string()
@@ -10,23 +11,24 @@ const bugSchema = Yup.object({
   body: Yup.string().required('Required'),
 })
 
-export default function EventForm() {
+export default function BugForm() {
+  const navigate = useNavigate()
   const formik = useFormik({
     initialValues: {
       title: '',
       body: '',
     },
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       // console.log(values)
-      addBug(values)
-      formik.resetForm()
+      await addBug(values)
+      navigate(-1)
     },
     validationSchema: bugSchema,
   })
 
   function handleCancel(e) {
     e.preventDefault()
-    props.cancelSubmit()
+    navigate(-1)
   }
 
   return (

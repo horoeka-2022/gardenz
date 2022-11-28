@@ -5,7 +5,7 @@ import { showError } from '../../slices/error'
 
 export function addBug(bugInput, consume = requestor) {
   dispatch(setWaiting())
-  return consume('/bugs', null, 'post', { ...bugInput })
+  return consume('/bugs', null, 'post', bugInput)
     .then(() => {
       dispatch(clearWaiting())
     })
