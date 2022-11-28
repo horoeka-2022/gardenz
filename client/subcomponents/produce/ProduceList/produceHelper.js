@@ -5,10 +5,10 @@ import { showError } from '../../../slices/error'
 
 export async function getProduce(gardenid, consume = requestor) {
   try {
-    await dispatch(setWaiting())
-    const produceType = await consume(`/gardenproduce/${gardenid}`)
-    await dispatch(clearWaiting())
-    return produceType.body
+    dispatch(setWaiting())
+    const res = await consume(`/gardenproduce/${gardenid}`)
+    dispatch(clearWaiting())
+    return res.body
   } catch (error) {
     dispatch(showError(error.message))
   }
