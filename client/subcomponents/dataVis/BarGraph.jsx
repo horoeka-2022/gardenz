@@ -1,17 +1,12 @@
 import React, { useMemo } from 'react'
 import { Bar } from '@visx/shape'
 import { Group } from '@visx/group'
-// import { GradientTealBlue } from '@visx/gradient'
-// import letterFrequency from '@visx/mock-data/lib/mocks/letterFrequency'
-// import { ScaleSVG } from '@visx/responsive';
 import { scaleBand, scaleLinear } from '@visx/scale'
 import { AxisBottom, AxisLeft } from '@visx/axis'
-// import { Grid, LineSeries, XYChart, Axis, Tooltip } from '@visx/xychart'
+
 const verticalMargin = 120
-// accessors
 
 export default function BarGraph({ events }) {
-  // bounds
   const clickAlert = true
   const width = 400
   const height = 400
@@ -23,7 +18,6 @@ export default function BarGraph({ events }) {
   const data = events
   const margin = { top: 61, right: 0, bottom: 40, left: 0 }
 
-  // a parsed date is passed into this and we find the corresponding date and use that in the graph
   const formatDate = (d) => {
     let date = ''
     data.map((obj) => {
@@ -34,14 +28,14 @@ export default function BarGraph({ events }) {
     })
     return date
   }
-  // scales, memoize for performance
+
   const xScale = useMemo(
     () =>
       scaleBand({
         range: [0, xMax],
         round: true,
-        domain: getSortedDates(data.map(getDates)), // range on x-axis (domain is an array where each element is a bar)
-        padding: 0.42, //made changes here - was 0.4
+        domain: getSortedDates(data.map(getDates)),
+        padding: 0.42,
       }),
     [xMax, data]
   )
@@ -50,14 +44,11 @@ export default function BarGraph({ events }) {
       scaleLinear({
         range: [yMax, 0],
         round: true,
-        domain: [0, Math.max(...data.map(getVolunteersNeeded))], // change to volunteers participate  // height on y-axis
+        domain: [0, Math.max(...data.map(getVolunteersNeeded))],
       }),
     [yMax, data]
   )
 
-  //
-  //
-  // add the ranges to scales
   const dateScale = scaleBand({
     domain: getSortedDates(data.map(getDates)),
     nice: true,
@@ -69,7 +60,6 @@ export default function BarGraph({ events }) {
   dateScale.rangeRound([0, xMax])
   volunteerScale.rangeRound([yMax, 0])
   //
-  // this range is needed for graph to have more than one element ^^^
   //
   return width < 10 ? null : (
     <>
@@ -120,8 +110,7 @@ export default function BarGraph({ events }) {
           />
           <AxisLeft
             scale={volunteerScale}
-            // top={margin.top}
-            left={margin.left + 50} // its crammed if less than 20 (disappears into the left side) probably can fix it if outside of group
+            left={margin.left + 50}
             label="Number of volunteers"
           />
         </Group>
