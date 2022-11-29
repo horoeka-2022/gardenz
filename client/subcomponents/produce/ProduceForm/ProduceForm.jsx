@@ -32,14 +32,15 @@ export default function ProduceForm({
             <Form className="form-content">
               <div className="field flex flex-col box-border w-80 ">
                 <label htmlFor="name" className="label border-style: solid;">
-                  Produce Name
-                </label>
+                  {' '}
+                  Produce Name{' '}
+                </label>{' '}
                 <Field
-                  className="form-box border-2 border-darkGreen rounded-md "
+                  className="form-box border-2 border-blue rounded-md pl-2"
                   id="name "
                   name="name"
                   type="text"
-                  placeholder=" Produce Name"
+                  placeholder="Produce Name"
                 />
                 {errors.name && touched.name ? <p>{errors.name}</p> : null}
                 <label htmlFor="garden" className="label leading-10">
@@ -55,7 +56,7 @@ export default function ProduceForm({
                 >
                   {({ field }) => (
                     <select
-                      className="border-2 border-darkGreen rounded-md"
+                      className="border-2 border-blue rounded-md"
                       {...field}
                     >
                       <option value=""></option>
@@ -102,10 +103,7 @@ export default function ProduceForm({
               </div>
 
               <div className="rounded-md pt-14 pl-40">
-                <button
-                  type="button"
-                  className="inline-block px-10 py-2 bg-orange text-white font-sans font-bold text-xs leading-tight  rounded shadow-md backdrop:focus:outline-none focus:ring-0 active:bg-orange active:shadow-lg transition duration-150 ease-in-out"
-                >
+                <button type="button" className="submit-button">
                   Submit
                 </button>
               </div>

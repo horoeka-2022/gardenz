@@ -16,7 +16,7 @@ export default function AdminEvent() {
         <article className="lg:w-3/4">
           <AdminEvents address={address} events={events} />
         </article>
-        <article className="w-full lg:w-1/2 h-96 my-5 lg:my-0">
+        <article className="w-full lg:w-1/2 h-96 my-5 lg:my-0 pl-20">
           Sweet as bar graph:
           <BarGraph events={events} />
         </article>
