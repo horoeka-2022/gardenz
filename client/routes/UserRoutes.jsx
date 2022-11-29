@@ -68,6 +68,7 @@ function UserRoutes() {
           path="/gardens/:id/shop/delivery"
           element={
             <>
+              <UserNav />
               <Delivery />
             </>
           }
