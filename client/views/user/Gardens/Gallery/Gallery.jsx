@@ -7,11 +7,13 @@ import useGarden from '../../../../hooks/useGarden'
 import LightGallery from 'lightgallery/react'
 
 // import styles
+// eslint-disable-next-line no-unused-vars
 import 'lightgallery/css/lightgallery.css'
 import 'lightgallery/css/lg-zoom.css'
 import 'lightgallery/css/lg-thumbnail.css'
 
 // import plugins if you need
+// eslint-disable-next-line  no-unused-vars
 import lgThumbnail from 'lightgallery/plugins/thumbnail'
 import lgZoom from 'lightgallery/plugins/zoom'
 

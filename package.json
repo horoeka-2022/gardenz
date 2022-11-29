@@ -84,6 +84,11 @@
         "testMatch": [
           "**/e2e/?(*.)+(spec|test).[jt]s?(x)"
         ]
+      },
+      {
+        "transformIgnorePatterns": [
+          "node_modules/(?!lightgallery)"
+        ]
       }
     ]
   },
