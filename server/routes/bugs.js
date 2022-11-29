@@ -1,9 +1,7 @@
-const request = require('superagent')
-require('dotenv').config()
 const express = require('express')
+const { createBug } = require('./bugCreate')
 
 const router = express.Router()
-
 module.exports = router
 
 router.post('/', async (req, res) => {
@@ -11,16 +9,8 @@ router.post('/', async (req, res) => {
     title: req.body.title,
     body: req.body.body,
   }
-  const accessToken = process.env.GITHUB_PERSONAL_ACCESS_TOKEN
-  const destinationAPI =
-    'https://api.github.com/repos/horoeka-2022/gardenz/issues'
-  const userAgent = 'gardenz'
   try {
-    await request
-      .post(destinationAPI)
-      .set('User-Agent', userAgent)
-      .set('Authorization', `Bearer ${accessToken}`)
-      .send(issue)
+    await createBug(issue)
     res.sendStatus(201)
   } catch (err) {
     console.log(err.message)
