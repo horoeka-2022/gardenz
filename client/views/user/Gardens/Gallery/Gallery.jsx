@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 import GardenHeader from '../../../../subcomponents/gardens/GardenHeader/GardenHeader'
 import useGarden from '../../../../hooks/useGarden'
+import { getGalleryImages } from './galleryHelper'
+import { useDispatch } from 'react-redux'
+import { setWaiting, showError } from '../../../../slices/waiting'
 
 import LightGallery from 'lightgallery/react'
 
@@ -22,6 +25,7 @@ import lgZoom from 'lightgallery/plugins/zoom'
 function Gallery() {
   const { id } = useParams()
   const { name, imageHeaderUrl } = useGarden(id)
+
   const images = [
     {
       id: id,
@@ -76,9 +80,11 @@ function Gallery() {
     )
   }
 
+
   return (
     <>
       <GardenHeader name={name} url={imageHeaderUrl} />
+
       <LightGallery
         mode="lg-fade"
         plugins={[lgThumbnail, lgZoom]}
@@ -88,6 +94,7 @@ function Gallery() {
           return <GalleryItem key={imageObj.name} image={imageObj} />
         })}
       </LightGallery>
+
     </>
   )
 }

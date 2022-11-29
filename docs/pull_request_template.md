@@ -10,6 +10,5 @@ For every submission to the codebase, check that it meets the DoD below.
 * [ ] eslint run and passes. Any issues fixed.
 > `npm run lint`
 * [ ] PR created in Github.
-* [ ] Two peer reviews from other devs.
 * [ ] One peer review from one of the teachers.
 * [ ] After all the peer review comments are addressed, the branch is merged to main!
