@@ -8,8 +8,8 @@ const router = express.Router()
 router.get('/:gardenid', (req, res) => {
   const galleryId = req.params.gardenid
   db.getImages(galleryId)
-    .then((photos) => {
-      res.json(photos)
+    .then((images) => {
+      res.json({ images })
     })
     .catch((err) => {
       log(err.message)
