@@ -11,9 +11,11 @@ function CartItem(props) {
     props.updateQuantity(id, newQuantity)
   }
   function decNum() {
-    let newQuantity = Number(num) - 1
-    setNum(() => newQuantity)
-    props.updateQuantity(id, newQuantity)
+    if (num > 0) {
+      let newQuantity = Number(num) - 1
+      setNum(() => newQuantity)
+      props.updateQuantity(id, newQuantity)
+    }
   }
 
   function handleChange(e) {
@@ -22,12 +24,12 @@ function CartItem(props) {
 
   return (
     <>
-      <tr>
-        <td>{name}</td>
-        <td>{price}</td>
-        <td>
-          <div className="col-xl-1">
-            <div className="input-group">
+      <div>
+        <div>
+          <div className="text-xl mr-20">
+            <p>{name}</p>
+            <div className="gap-1 columns-2">
+              <p>{price}</p>
               <button
                 className="btn btn-info ms-1 mr-40 bg-orange p-5"
                 type="button"
@@ -38,13 +40,13 @@ function CartItem(props) {
 
               <input
                 type="text"
-                className="form-control"
+                className="form-control ml-10"
                 value={num}
                 onChange={handleChange}
               />
 
               <button
-                className="btn btn-info ms-1 bg-orange p-5"
+                className="btn btn-info ms-1 ml-0 bg-orange p-5"
                 type="button"
                 onClick={incNum}
               >
@@ -52,8 +54,8 @@ function CartItem(props) {
               </button>
             </div>
           </div>
-        </td>
-      </tr>
+        </div>
+      </div>
     </>
   )
 }

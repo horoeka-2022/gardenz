@@ -12,18 +12,15 @@ function Total(props) {
   // }, [props.items.length])
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <td role="columnheader">Shipping</td>
-          <td role="columnheader">Calculated at checkout</td>
-        </tr>
-      </thead>
-      <tbody>
-        <td>Total(inc. GST)</td>
-        <td>{props.total}</td>
-      </tbody>
-    </table>
+    <>
+      <div className="text-xl  columns-2">
+        {' '}
+        <p>Shipping</p>
+        <p>Calculated at checkout</p>
+        <p>Total(inc. GST)</p>
+        <p>{props.total}</p>
+      </div>
+    </>
   )
 }
 
