@@ -1,10 +1,8 @@
-// import Shop from './Shop'
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 import '@testing-library/jest-dom'
 import { userEvent } from '@storybook/testing-library'
 import { fetchShopList } from './shopHelper'
-
 import { renderWithRedux } from '../../../../test-utils'
 import store from '../../../../store'
 import ShopListItem from '../../Gardens/Shop/ShopListItem'
@@ -12,6 +10,7 @@ import Shop from './Shop'
 
 jest.mock('./shopHelper')
 
+//Testing item
 const item = {
   id: 1,
   productId: 2,
@@ -51,7 +50,6 @@ test('Shop component should display 2 items', async () => {
   ])
 
   //ARRANGE
-
   function addProductToCart(product, quantity) {
     expect(quantity).toBe(1)
     expect(product.name).toBe('Large veggie box')
@@ -72,7 +70,6 @@ test('Shop component should display 2 items', async () => {
   expect(addToBasket).toBeInTheDocument()
 })
 
-//--Our test
 test('when the Counter component is rendered, the counter should start with 1', () => {
   // ARRANGE
   renderWithRedux(<ShopListItem product={item} />)
@@ -98,22 +95,26 @@ test('when the increment button is clicked, the counter should equal to two', ()
 })
 
 test('when the decrement button is clicked, the counter should be 1', () => {
+  //ARRANGE
   renderWithRedux(<ShopListItem product={item} />)
-
+  //ACT
   const decrementButton = screen.getByRole('button', { name: '-' })
   userEvent.click(decrementButton)
-  //defining quantity
+
   const quantity = screen.getByText('1')
-  //exact
+  //ASSERT
   expect(quantity).toBeInTheDocument()
 })
 
 test('data is added into local storage', () => {
+  //ARRANGE
   const setLocalStorage = (id, data) => {
     window.localStorage.setItem(id, JSON.stringify(data))
   }
+  // ACT
   const mockId = '1'
   const mockJson = { data: 'json data' }
   setLocalStorage(mockId, mockJson)
+  //ASSERT
   expect(localStorage.getItem(mockId)).toEqual(JSON.stringify(mockJson))
 })

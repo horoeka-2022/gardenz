@@ -32,7 +32,7 @@ function Shop() {
     <>
       <main>
         <GardenHeader name={name} url={imageHeaderUrl} />
-        <p>A shop will be here.</p>
+
         <div className="flex flex-wrap">
           {shop.map((item) => {
             return (
