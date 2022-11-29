@@ -15,7 +15,7 @@ function Photo({
   async function handleTrash() {
     const confirmAction = confirm('Please confirm deletion of the photo')
     confirmAction ? await deletePhoto(photo.id) : null
-    const data = await getPhotos()
+    const data = await getPhotos(id)
     setPhotos(() => data.body)
   }
 
