@@ -22,4 +22,16 @@ describe('bug form field', () => {
       expect(bodyInput).toHaveValue('test body')
     })
   })
+
+  it('required comes up on invalid input', async () => {
+    const handleSubmit = jest.fn()
+    renderWithRouter(<BugForm onSubmit={handleSubmit} />)
+    userEvent.clear(screen.getByLabelText(/summary/i))
+    userEvent.clear(screen.getByLabelText(/steps/i))
+
+    userEvent.click(screen.getByRole('button', { name: /submit/i }))
+
+    const ele = await screen.findAllByText('Required')
+    expect(ele[0]).toBeInTheDocument()
+  })
 })
