@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { useParams } from 'react-router-dom'
 
 import GardenHeader from '../../../../subcomponents/gardens/GardenHeader/GardenHeader'
 import useGarden from '../../../../hooks/useGarden'
-import { getGalleryImages } from './galleryHelper'
-import { useDispatch } from 'react-redux'
-import { setWaiting, showError } from '../../../../slices/waiting'
 
 import LightGallery from 'lightgallery/react'
 
@@ -80,7 +77,6 @@ function Gallery() {
     )
   }
 
-
   return (
     <>
       <GardenHeader name={name} url={imageHeaderUrl} />
@@ -94,7 +90,6 @@ function Gallery() {
           return <GalleryItem key={imageObj.name} image={imageObj} />
         })}
       </LightGallery>
-
     </>
   )
 }
