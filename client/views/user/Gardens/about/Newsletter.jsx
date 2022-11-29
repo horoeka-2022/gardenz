@@ -1,14 +1,29 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import GardenHeader from '../../../../subcomponents/gardens/GardenHeader/GardenHeader'
 import useGarden from "../../../../hooks/useGarden";
-import { addSubscription } from "./subscriptionsHelper";
+import { addSubscription, fetchSubscriptionData } from "./subscriptionsHelper";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
+
 export default function Newsletter() {
+  const [subscriptionData, setSubscriptionData] = useState([]);
+  const navigate = useNavigate()
   const { id } = useParams()
   const { name, imageHeaderUrl } = useGarden(id)
+
+  useEffect(async () => {
+    // function to fetch all the data for subscriptions and store it inside useState
+    const subscriberData = await fetchSubscriptionData(id)
+    setSubscriptionData(subscriberData)
+    console.log(subscriberData);
+  }, [])
+
+  function checkSubscription(email) {
+    return subscriptionData.map((data) => data.email).some((SubscriberEmail) => SubscriberEmail === email)
+  }
+
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -21,8 +36,14 @@ export default function Newsletter() {
       email: Yup.string().email("Invalid email address").required("Required")
     }),
     onSubmit: (values) => {
-      addSubscription(id, values)
+      const checkResult = checkSubscription(values.email)
+      if (!checkSubscription(values.email)) {
+        console.log(values.email);
+        addSubscription(id, values)
+      }
+      { checkResult ? alert("You are already signed up to our Newsletter!!") : alert("You are now signed up to our Newsletter!!") }
       formik.resetForm()
+      navigate('confirmation', { result: checkResult })
     },
   })
   return (

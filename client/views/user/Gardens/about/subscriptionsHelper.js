@@ -17,3 +17,19 @@ export function addSubscription(gardenId, userInfo, consume = requestor) {
       dispatch(clearWaiting())
     })
 }
+
+export function fetchSubscriptionData(gardenId, consume = requestor) {
+  dispatch(setWaiting())
+  return consume('/subscriptions', null, 'get', { gardenId })
+    .then((res) => {
+      dispatch(clearWaiting())
+      return res.body
+    })
+    .catch((err) => {
+      dispatch(showError(err))
+    })
+    .finally(() => {
+      dispatch(clearWaiting())
+    })
+}
+

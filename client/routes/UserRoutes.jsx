@@ -12,6 +12,7 @@ import News from '../views/user/Gardens/News/News'
 import Shop from '../views/user/Gardens/Shop/Shop'
 import Profile from '../views/user/Profile/Profile'
 import Newsletter from '../views/user/Gardens/about/Newsletter'
+import ConfirmNewsletter from '../views/user/Gardens/about/ConfirmNewsletter'
 
 function UserRoutes() {
   return (
@@ -37,6 +38,7 @@ function UserRoutes() {
             </>
           }
         />
+
         <Route
           path="/gardens/:id/events"
           element={
@@ -70,6 +72,24 @@ function UserRoutes() {
             <>
               <UserNav />
               <Newsletter />
+            </>
+          }
+        />
+        <Route
+          path="/gardens/:id/signup/confirmation"
+          element={
+            <>
+              <UserNav />
+              <ConfirmNewsletter />
+            </>
+          }
+        />
+        <Route
+          path="/gardens/:id/about"
+          element={
+            <>
+              <UserNav />
+              <About />
             </>
           }
         />

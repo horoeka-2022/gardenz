@@ -14,3 +14,16 @@ router.post('/', (req, res) => {
       res.status(500).send('DATABASE ERROR: ' + err.message)
     })
 })
+
+router.get('/', (req, res) => {
+  const gardenId = req.query.gardenId
+  console.log(`getGardenData: `, gardenId);
+  db.getSubscriptions(gardenId)
+    .then((data) => {
+      res.json(data)
+    })
+    .catch((err) => {
+      console.error(err)
+      res.status(500).send('DATABASE ERROR: ' + err.message)
+    })
+})

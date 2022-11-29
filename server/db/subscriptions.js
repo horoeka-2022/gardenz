@@ -2,6 +2,7 @@ const connection = require('./connection')
 
 module.exports = {
   addSubscription,
+  getSubscriptions,
 }
 
 function addSubscription(newSubscription, db = connection) {
@@ -12,4 +13,8 @@ function addSubscription(newSubscription, db = connection) {
     last_name: lastName,
     email,
   })
+}
+
+function getSubscriptions(id, db = connection) {
+  return db('subscriptions').where('garden_id', id).select()
 }
