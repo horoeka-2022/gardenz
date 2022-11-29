@@ -4,7 +4,7 @@ export async function getPhotos(id) {
   try {
     return await consume(`/gallery/${id}`, '', 'get', {})
   } catch (error) {
-    console.log(error)
+    console.error(error)
   }
 }
 
@@ -14,6 +14,6 @@ export async function deleteAllPhotos(id, arrPhotos) {
       photosId: arrPhotos,
     })
   } catch (error) {
-    console.log(error)
+    console.error(error)
   }
 }
