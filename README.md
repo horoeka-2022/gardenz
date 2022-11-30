@@ -383,5 +383,29 @@ The styling throughout GardeNZ closely follows the Tailwind docs. Please refer t
 
 You can find the design files here: [figma](https://www.figma.com/file/QbkygWObPAOmQzMRvVV6ma/gardenz?node-id=0%3A1)
 
+___
+## Final Retro
 
+what went well!
+- communication, about the goals and between everyone
+- empathetic team mate :)
+- no work outside of work hours! (sticking to boundaries)
+- feedback from facilitators - code reviews and in person chats
+- the workflow and pace
+- a lot of new learning
+- independent reserach
+- asking for help
+- splitting up intro and code intro into two sessions/days
+- looking for examples in the codebase - reading code
 
+what could be improved?
+- figma to be updated (gallery admin) look closely at styling (facilitators!!)
+- lightgallery testing answers
+- better timeboxing
+- taking breaks to keep fresh
+- more emphasis on how to read the pr comments
+
+actions
+- spend more time reading external docs - even if they suck!
+- submit pr or issue for doc fixes
+- do a demo of a pr
