@@ -4,6 +4,7 @@ import { showError } from './slices/error'
 import { setUser } from './slices/user'
 import { clearWaiting, setWaiting } from './slices/waiting'
 
+
 const emptyUser = {
   id: null,
   isAdmin: false,
