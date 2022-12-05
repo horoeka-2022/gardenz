@@ -53,9 +53,6 @@ export default function NewsForm(props) {
                     name="title"
                     type="text"
                     placeholder="news title"
-                    utton-group
-                    items-center
-                    block
                     onChange={formik.handleChange}
                     value={formik.values.title}
                   />

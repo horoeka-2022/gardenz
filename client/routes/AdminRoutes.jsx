@@ -17,6 +17,7 @@ import Menu from '../views/admin/Menu/Menu'
 import { Route, Routes } from 'react-router-dom'
 import Profile from '../views/user/Profile/Profile'
 import PageNotFound from '../views/PageNotFound/PageNotFound'
+import Gallery from '../views/admin/Gallery/Gallery'
 
 function AdminRoutes() {
   return (
@@ -94,7 +95,7 @@ function AdminRoutes() {
           element={
             <>
               <AdminNav />
-              <p>gallery placeholder</p>
+              <Gallery />
             </>
           }
         />

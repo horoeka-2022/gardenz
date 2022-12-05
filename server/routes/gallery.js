@@ -7,9 +7,9 @@ const router = express.Router()
 // GET /api/v1/gallery/1
 router.get('/:gardenid', (req, res) => {
   const galleryId = req.params.gardenid
-  db.getImages(galleryId)
-    .then((images) => {
-      res.json({ images })
+  db.getPhotos(galleryId)
+    .then((photos) => {
+      res.json(photos)
     })
     .catch((err) => {
       log(err.message)
@@ -29,13 +29,29 @@ router.post('/:gardenId', async (req, res) => {
     garden_id: req.params.gardenId,
   }
   try {
-    await db.addImage(image)
+    await db.addPhoto(image)
     res.sendStatus(201)
   } catch (err) {
     log(err.message)
     res.status(500).json({
       error: {
         title: 'Unable to add gallery images',
+      },
+    })
+  }
+})
+
+// POST /api/v1/gallery/1/delete
+router.post('/:gardenId/delete', async (req, res) => {
+  const { photosId } = req.body
+  try {
+    await Promise.all(photosId.map(async (id) => await db.deletePhotos(id)))
+    res.sendStatus(200)
+  } catch (err) {
+    log(err.message)
+    res.status(500).json({
+      error: {
+        title: 'Unable to delete gallery images',
       },
     })
   }

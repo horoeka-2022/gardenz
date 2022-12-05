@@ -19,9 +19,9 @@ afterAll(() => {
   return testDb.destroy()
 })
 
-describe('getImages', () => {
+describe('getPhotos', () => {
   it('should return the image name for given garden', () => {
-    return db.getImages(1, testDb).then((images) => {
+    return db.getPhotos(1, testDb).then((images) => {
       expect(images[0].name).toBe('image1')
       expect(images[0].url).toBeDefined()
       return null
@@ -29,7 +29,7 @@ describe('getImages', () => {
   })
 })
 
-describe('addImage', () => {
+describe('addPhoto', () => {
   it('should add an image to the list of images', () => {
     const newImage = {
       name: 'image 4',
@@ -37,7 +37,7 @@ describe('addImage', () => {
       garden_id: 1,
     }
     return db
-      .addImage(newImage, testDb)
+      .addPhoto(newImage, testDb)
       .then((newImageId) => {
         return testDb('gallery').where('id', newImageId)
       })

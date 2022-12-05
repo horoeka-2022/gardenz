@@ -85,9 +85,8 @@ export default function ProduceForm({
                         >
                           <Field
                             value={garden.id.toString()}
-                            input
                             type="checkbox"
-                            class="checked:accent-orange text-white mr-5"
+                            className="checked:accent-orange text-white mr-5"
                             name="gardenIds"
                           />
                           {errors.gardenIds && touched.gardenIds ? (
