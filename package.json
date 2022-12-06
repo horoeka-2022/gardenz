@@ -84,6 +84,11 @@
         "testMatch": [
           "**/e2e/?(*.)+(spec|test).[jt]s?(x)"
         ]
+      },
+      {
+        "transformIgnorePatterns": [
+          "node_modules/(?!lightgallery)"
+        ]
       }
     ]
   },
@@ -113,6 +118,7 @@
     "jsonwebtoken": "^8.5.1",
     "jwks-rsa": "^2.0.5",
     "knex": "^1.0.3",
+    "lightgallery": "^2.7.0",
     "limiter": "^2.1.0",
     "moment": "^2.29.1",
     "pg": "^8.6.0",
