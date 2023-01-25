@@ -4,38 +4,35 @@ import { setWaiting, clearWaiting } from '../../slices/waiting'
 import { setUser } from '../../slices/user'
 import { showError } from '../../slices/error'
 
-export function registerUser(
+export async function registerUser(
   user,
   isAdmin,
   authUser,
   navigateTo,
   consume = requestor
 ) {
-  const newUser = {
-    firstName: user.firstName,
-    lastName: user.lastName,
-    gardenId: user.gardenId,
-    email: authUser.email,
-    auth0Id: authUser.sub,
-  }
-  const storeState = getState()
-  const { token } = storeState.user
-
   dispatch(setWaiting())
+  try {
+    const newUser = {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      gardenId: user.gardenId,
+      email: authUser.email,
+      auth0Id: authUser.sub,
+    }
+    const storeState = await getState()
+    const { token } = storeState.user
 
-  return consume('/users', token, 'post', newUser)
-    .then((res) => {
-      const newUser = res.body
-      newUser.isAdmin = isAdmin
-      newUser.token = token
-      dispatch(setUser(newUser))
-      navigateTo(`/gardens`)
-      return newUser
-    })
-    .catch((err) => {
-      dispatch(showError(err.message))
-    })
-    .finally(() => {
-      dispatch(clearWaiting())
-    })
+    const user = await consume('/users', token, 'post', newUser)
+    const newUserInfo = user.body
+    newUser.isAdmin = isAdmin
+    newUser.token = token
+    dispatch(setUser(newUserInfo))
+    navigateTo(`/gardens`)
+    return newUserInfo
+  } catch (error) {
+    dispatch(showError(error.message))
+  } finally {
+    dispatch(clearWaiting())
+  }
 }

@@ -1,16 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import { getProduce } from './produceHelper'
+import { showError } from '../../../slices/error'
+import { useDispatch } from 'react-redux'
 
 export default function ProduceList({ gardenid }) {
+  const dispatch = useDispatch()
   const [produce, setProduce] = useState([])
 
   useEffect(() => {
-    // eslint-disable-next-line promise/catch-or-return
-    getProduce(gardenid).then(({ produce }) => {
-      setProduce(produce)
-      return null
-    })
+    try {
+      const retrieveProduce = async () => {
+        const gardenProducts = await getProduce(gardenid)
+        setProduce(gardenProducts.produce)
+      }
+      retrieveProduce()
+    } catch (error) {
+      dispatch(showError(error.message))
+    }
   }, [gardenid])
+
 
   return (
     <>

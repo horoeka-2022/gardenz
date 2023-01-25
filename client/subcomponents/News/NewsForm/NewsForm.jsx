@@ -48,14 +48,11 @@ export default function NewsForm(props) {
                 </div>
                 <div className="py-1 field">
                   <input
-                    className="form-box border-2 outline-none  focus:border-blue"
+                    className="form-box border-2 outline-none focus:border-blue button-group items-center block"
                     id="title"
                     name="title"
                     type="text"
                     placeholder="news title"
-                    utton-group
-                    items-center
-                    block
                     onChange={formik.handleChange}
                     value={formik.values.title}
                   />

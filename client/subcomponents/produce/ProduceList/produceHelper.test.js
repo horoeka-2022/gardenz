@@ -9,7 +9,7 @@ afterEach(() => {
 })
 
 describe('getProduce', () => {
-  it('Dispatches correctly and returns data', () => {
+  it('Dispatches correctly and returns data', async () => {
     function fakeConsume() {
       return Promise.resolve({
         body: {
@@ -21,24 +21,22 @@ describe('getProduce', () => {
       })
     }
 
-    return getProduce(1, fakeConsume).then(({ produce }) => {
-      expect(produce[0].name).toBe('Spinach')
-      expect(produce[0].produceType).toBe('Leafy greens')
-      expect(dispatch).toHaveBeenCalledTimes(2)
-      return null
-    })
+    const { produce } = await getProduce(1, fakeConsume)
+    expect(produce[0].name).toBe('Spinach')
+    expect(produce[0].produceType).toBe('Leafy greens')
+    expect(dispatch).toHaveBeenCalledTimes(2)
   })
 
-  it('dispatches showError', () => {
+
+  it('dispatches showError', async () => {
     function fakeConsume() {
       return Promise.reject(Error('mock error'))
     }
 
-    return getProduce(1, fakeConsume).then(() => {
-      expect(dispatch).toHaveBeenCalledWith(setWaiting())
-      expect(dispatch).not.toHaveBeenCalledWith(clearWaiting())
-      expect(dispatch.mock.calls[1][0].payload).toBe('mock error')
-      return null
-    })
+    await getProduce(1, fakeConsume)
+    expect(dispatch).toHaveBeenCalledWith(setWaiting())
+    expect(dispatch).not.toHaveBeenCalledWith(clearWaiting())
+    expect(dispatch.mock.calls[1][0].payload).toBe('mock error')
   })
 })
+
