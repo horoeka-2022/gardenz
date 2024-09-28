@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react'
 import Map from './Map'
 
 describe('user location marker', () => {
-  it('displays when userCoordinates available on props', async () => {
+  it('displays when userCoordinates available on props', () => {
     const userCoordinates = {
       lat: -36.86667,
       lon: 174.76667,
@@ -17,7 +17,7 @@ describe('user location marker', () => {
         userCoordinates={userCoordinates}
       />
     )
-    const marker = await screen.findByRole('presentation')
+    const marker = screen.queryByAltText('Marker')
     expect(marker).toBeInTheDocument()
   })
   it('user location marker has a different image', async () => {
@@ -39,8 +39,8 @@ describe('user location marker', () => {
 
   it('does not display when userCoordinates not provided', () => {
     render(<Map addresses={[]} coordinates={[]} names={[]} />)
-    const markers = screen.queryByRole('img')
-    expect(markers).toBeNull()
+    const markers = screen.queryAllByAltText('Marker')
+    expect(markers).toHaveLength(0)
   })
 })
 
